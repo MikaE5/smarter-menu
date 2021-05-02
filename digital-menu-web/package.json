@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0",
+    "svelte-navigator": "^3.1.5",
     "sveltestrap": "^4.0.1"
   }
 }

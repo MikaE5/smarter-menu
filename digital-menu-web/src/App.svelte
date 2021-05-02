@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Button, Col, Row } from 'sveltestrap';
+  import { Router, Route } from 'svelte-navigator';
 </script>
 
 <svelte:head>
@@ -13,10 +14,14 @@
   />
 </svelte:head>
 
-<main>
-  <Row>
-    <Col>
-      <Button color="primary" outline>Hello World!</Button>
-    </Col>
-  </Row>
-</main>
+<Router>
+  <main>
+    <Route path="/"
+      ><Row>
+        <Col>
+          <Button color="primary" outline>Hello World!</Button>
+        </Col>
+      </Row></Route
+    >
+  </main>
+</Router>
