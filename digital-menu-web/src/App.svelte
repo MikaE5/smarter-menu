@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Button, Col, Row } from 'sveltestrap';
   import { Router, Route } from 'svelte-navigator';
+  import * as test from './test.json';
 </script>
 
 <svelte:head>
@@ -19,7 +20,7 @@
     <Route path="/"
       ><Row>
         <Col>
-          <Button color="primary" outline>Hello World!</Button>
+          <Button color="primary" outline>{test.test}</Button>
         </Col>
       </Row></Route
     >
