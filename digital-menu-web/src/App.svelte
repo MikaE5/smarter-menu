@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { Button, Col, Row } from 'sveltestrap';
   import { Router, Route } from 'svelte-navigator';
-  import * as test from './test.json';
+  import Categories from './components/Categories.svelte';
 </script>
 
 <svelte:head>
@@ -17,12 +16,11 @@
 
 <Router>
   <main>
-    <Route path="/"
-      ><Row>
-        <Col>
-          <Button color="primary" outline>{test.test}</Button>
-        </Col>
-      </Row></Route
-    >
+    <Route path="/">
+      <Categories />
+    </Route>
+    <Route path="category/:category" let:params>
+      <p>{decodeURIComponent(params.category)}</p>
+    </Route>
   </main>
 </Router>
