@@ -3,6 +3,7 @@
   import { getCategoryImagePath } from '../util/image.util';
   import type { Category } from './model/category.interface';
   import ButtonLink from './shared/ButtonLink.svelte';
+  import { getRouteToCategory } from './util/category.util';
   export let category: Category;
 
   const imgSrc = getCategoryImagePath(category.image);
@@ -14,7 +15,7 @@
   </CardBody>
   <CardFooter>
     <ButtonLink
-      to={`category/${encodeURIComponent(category.id)}`}
+      to={getRouteToCategory(category.id)}
       label={category.name}
     /></CardFooter
   >

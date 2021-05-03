@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-navigator';
   import Categories from './components/Categories.svelte';
+  import Header from './components/Header.svelte';
+  import MenuItems from './components/MenuItems.svelte';
 </script>
 
 <svelte:head>
@@ -15,12 +17,15 @@
 </svelte:head>
 
 <Router>
+  <header>
+    <Header />
+  </header>
   <main>
     <Route path="/">
       <Categories />
     </Route>
-    <Route path="category/:category" let:params>
-      <p>{decodeURIComponent(params.category)}</p>
+    <Route path="category/:category" primary={false} let:params>
+      <MenuItems categoryId={decodeURIComponent(params.category)} />
     </Route>
   </main>
 </Router>

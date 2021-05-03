@@ -1,0 +1,72 @@
+[
+  {
+    "id": "menu-item/coffee",
+    "name": "Kaffee",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 2.3,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/sparkling-water",
+    "name": "Spritziges Mineralwasser",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 1.75,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/capuccino",
+    "name": "Cappuccino",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 2.4,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/apple-cake",
+    "name": "Apfelkuchen",
+    "categories": ["category/cake"],
+    "price": {
+      "amount": 3.1,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/strawberry-cake",
+    "name": "Erdbeerkuchen",
+    "categories": ["category/cake"],
+    "price": {
+      "amount": 3.1,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/scrambled-eggs-with-bacon",
+    "name": "Rührei mit Speck",
+    "categories": ["category/breakfast"],
+    "price": {
+      "amount": 4.65,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  },
+  {
+    "id": "menu-item/hardboiled-egg",
+    "name": "Hartgekochtes Ei",
+    "categories": ["category/breakfast"],
+    "price": {
+      "amount": 2.55,
+      "unit": "€"
+    },
+    "image": "category-breakfast.jpg"
+  }
+]

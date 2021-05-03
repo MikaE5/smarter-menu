@@ -1,2 +1,2 @@
 export const getCategoryImagePath = (src: string) =>
-  `./images/categories/${src}`;
+  `/images/categories/${src}`;
