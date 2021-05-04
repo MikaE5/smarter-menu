@@ -7,3 +7,8 @@ export const getCategories = (): Category[] => categories;
 
 export const getMenuItemsForCategory = (categoryId: string): MenuItem[] =>
   menuItems.filter((item: MenuItem) => item.categories.includes(categoryId));
+
+export const getMenuItems = (ids: string[]): MenuItem[] => {
+  const idSet = new Set(ids);
+  return menuItems.filter(({ id }) => idSet.has(id));
+};

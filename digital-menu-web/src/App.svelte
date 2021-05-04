@@ -1,8 +1,23 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-navigator';
+  import Bookmarks from './components/Bookmarks.svelte';
   import Categories from './components/Categories.svelte';
   import Header from './components/Header.svelte';
   import MenuItems from './components/MenuItems.svelte';
+  import { getRouteToCategory } from './components/util/category.util';
+  import { getCategories } from './data/data.util';
+  import pageContent from './data/page-content.json';
+
+  const navItems: Array<{ title: string; route: string }> = getCategories().map(
+    (category) => {
+      return {
+        title: category.name,
+        route: getRouteToCategory(category.id),
+      };
+    }
+  );
+  const title = pageContent.header.title;
+  const emptyItemsMessage = pageContent['bookmarks'].noItems;
 </script>
 
 <svelte:head>
@@ -18,7 +33,7 @@
 
 <Router>
   <header>
-    <Header />
+    <Header {navItems} {title} />
   </header>
   <main>
     <Route path="/">
@@ -26,6 +41,9 @@
     </Route>
     <Route path="category/:category" primary={false} let:params>
       <MenuItems categoryId={decodeURIComponent(params.category)} />
+    </Route>
+    <Route path="/bookmarks">
+      <Bookmarks {emptyItemsMessage} />
     </Route>
   </main>
 </Router>

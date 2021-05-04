@@ -6,7 +6,11 @@
 
   export let categoryId: string;
 
-  const menuItems: MenuItemType[] = getMenuItemsForCategory(categoryId);
+  let menuItems: MenuItemType[];
+  $: {
+    // refetch menuItems if route param changes
+    menuItems = getMenuItemsForCategory(categoryId);
+  }
 </script>
 
 <Row cols={1}>

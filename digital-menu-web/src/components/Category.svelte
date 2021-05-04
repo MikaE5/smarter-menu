@@ -9,7 +9,7 @@
   const imgSrc = getCategoryImagePath(category.image);
 </script>
 
-<Card color="secondary">
+<Card color="light">
   <CardBody>
     <img src={imgSrc} class="img-fluid category-image" alt="" />
   </CardBody>

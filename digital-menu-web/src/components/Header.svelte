@@ -1,33 +1,38 @@
 <script lang="ts">
-  import { useNavigate, Link } from 'svelte-navigator';
+  import { useNavigate, Link, Route } from 'svelte-navigator';
   import {
     Collapse,
     Navbar,
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
     NavLink,
   } from 'sveltestrap';
-  import { getCategories } from '../data/data.util';
-  import { getRouteToCategory } from './util/category.util';
+  import ClickIcon from './shared/ClickIcon.svelte';
+
+  export let title: string;
+  export let navItems: Array<{ title: string; route: string }>;
 
   let isOpen = false;
   const toggle = () => (isOpen = !isOpen);
-  const categories = getCategories();
   const navigate = useNavigate();
+  const navigateTo = (route: string) => {
+    if (isOpen) isOpen = false;
+    navigate(route);
+  };
 </script>
 
-<Navbar color="light" light>
-  <Link to="/">
-    <NavbarBrand class="mr-auto">sveltestrap</NavbarBrand></Link
+<Navbar color="secondary" light>
+  <NavbarBrand class="mr-auto" on:click={() => navigateTo('/')}
+    >{title}</NavbarBrand
   >
-  <NavbarToggler on:click={toggle} className="mr-2" />
+  <ClickIcon icon="bookmark" click={() => navigateTo('/bookmarks')} />
+  <NavbarToggler on:click={toggle} class="ml-2" />
   <Collapse {isOpen} navbar>
     <Nav navbar>
-      {#each categories as category}
-        <NavLink on:click={() => navigate(getRouteToCategory(category.id))}
-          >{category.name}</NavLink
+      {#each navItems as navItem}
+        <NavLink on:click={() => navigateTo(navItem.route)}
+          >{navItem.title}</NavLink
         >
       {/each}
     </Nav>
