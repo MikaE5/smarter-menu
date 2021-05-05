@@ -2,6 +2,8 @@
   import { Router, Route } from 'svelte-navigator';
   import Bookmarks from './components/Bookmarks.svelte';
   import Categories from './components/Categories.svelte';
+  import DataPrivacy from './components/DataPrivacy.svelte';
+  import Footer from './components/Footer.svelte';
   import Header from './components/Header.svelte';
   import MenuItems from './components/MenuItems.svelte';
   import { getRouteToCategory } from './components/util/category.util';
@@ -17,7 +19,8 @@
     }
   );
   const title = pageContent.header.title;
-  const emptyItemsMessage = pageContent['bookmarks'].noItems;
+  const emptyItemsMessage = pageContent.bookmarks.noItems;
+  const { slogan, dataPrivacy } = pageContent['footer'];
 </script>
 
 <svelte:head>
@@ -32,18 +35,24 @@
 </svelte:head>
 
 <Router>
-  <header>
-    <Header {navItems} {title} />
-  </header>
-  <main>
-    <Route path="/">
-      <Categories />
-    </Route>
-    <Route path="category/:category" primary={false} let:params>
-      <MenuItems categoryId={decodeURIComponent(params.category)} />
-    </Route>
-    <Route path="/bookmarks">
-      <Bookmarks {emptyItemsMessage} />
-    </Route>
-  </main>
+  <div class="d-flex flex-column min-vh-100">
+    <header>
+      <Header {navItems} {title} />
+    </header>
+    <main class="flex-grow-1">
+      <Route path="/">
+        <Categories />
+      </Route>
+      <Route path="category/:category" primary={false} let:params>
+        <MenuItems categoryId={decodeURIComponent(params.category)} />
+      </Route>
+      <Route path="/bookmarks">
+        <Bookmarks {emptyItemsMessage} />
+      </Route>
+      <Route path="/privacy">
+        <DataPrivacy />
+      </Route>
+    </main>
+    <footer><Footer {slogan} {dataPrivacy} /></footer>
+  </div>
 </Router>

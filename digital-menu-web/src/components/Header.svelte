@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useNavigate, Link, Route } from 'svelte-navigator';
+  import { useNavigate } from 'svelte-navigator';
   import {
     Collapse,
     Navbar,

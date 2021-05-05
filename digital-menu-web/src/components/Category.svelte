@@ -1,22 +1,18 @@
 <script lang="ts">
-  import { Card, CardBody, CardFooter } from 'sveltestrap';
-  import { getCategoryImagePath } from '../util/image.util';
+  import { Icon, Card, CardHeader, CardTitle } from 'sveltestrap';
   import type { Category } from './model/category.interface';
-  import ButtonLink from './shared/ButtonLink.svelte';
   import { getRouteToCategory } from './util/category.util';
+  import { useNavigate } from 'svelte-navigator';
   export let category: Category;
-
-  const imgSrc = getCategoryImagePath(category.image);
+  const navigate = useNavigate();
+  const route = getRouteToCategory(category.id);
 </script>
 
-<Card color="light">
-  <CardBody>
-    <img src={imgSrc} class="img-fluid category-image" alt="" />
-  </CardBody>
-  <CardFooter>
-    <ButtonLink
-      to={getRouteToCategory(category.id)}
-      label={category.name}
-    /></CardFooter
-  >
+<Card color="light" on:click={() => navigate(route)}>
+  <CardHeader>
+    <div class="d-flex justify-content-between">
+      <CardTitle>{category.name}</CardTitle>
+      <Icon name="arrow-right" />
+    </div>
+  </CardHeader>
 </Card>
