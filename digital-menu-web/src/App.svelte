@@ -21,6 +21,7 @@
   const title = pageContent.header.title;
   const emptyItemsMessage = pageContent.bookmarks.noItems;
   const { slogan, dataPrivacy } = pageContent['footer'];
+  const homeBreadCrumb = pageContent['categories'].homeBreadCrumb;
 </script>
 
 <svelte:head>
@@ -44,7 +45,10 @@
         <Categories />
       </Route>
       <Route path="category/:category" primary={false} let:params>
-        <MenuItems categoryId={decodeURIComponent(params.category)} />
+        <MenuItems
+          {homeBreadCrumb}
+          categoryId={decodeURIComponent(params.category)}
+        />
       </Route>
       <Route path="/bookmarks">
         <Bookmarks {emptyItemsMessage} />

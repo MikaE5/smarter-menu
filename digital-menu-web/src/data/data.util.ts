@@ -12,3 +12,8 @@ export const getMenuItems = (ids: string[]): MenuItem[] => {
   const idSet = new Set(ids);
   return menuItems.filter(({ id }) => idSet.has(id));
 };
+
+export const getCategoryNameForId = (categoryId: string): string => {
+  const category = categories.find(({ id }) => id === categoryId);
+  return category !== undefined ? category.name : undefined;
+};

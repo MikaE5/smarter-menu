@@ -34,25 +34,27 @@
 <div>
   <Card color="light">
     <CardHeader>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex">
         <img
           on:click={toggle}
           src={imgSrc}
           alt=""
           class="menu-item-image mr-2"
         />
-        <Row cols={1}>
-          <Col>
-            <div class="d-flex justify-content-between flex-grow-1">
-              <CardTitle>{menuItem.name}</CardTitle>
-              <ClickIcon
-                click={() => addToBookmarks(menuItem.id)}
-                icon="plus-circle"
-              />
-            </div>
-          </Col>
-          <Col><CardText>{priceString}</CardText></Col>
-        </Row>
+        <div class="flex-grow-1">
+          <Row cols={1}>
+            <Col>
+              <div class="d-flex justify-content-between">
+                <CardTitle>{menuItem.name}</CardTitle>
+                <ClickIcon
+                  click={() => addToBookmarks(menuItem.id)}
+                  icon="plus-circle"
+                />
+              </div>
+            </Col>
+            <Col><CardText>{priceString}</CardText></Col>
+          </Row>
+        </div>
       </div>
     </CardHeader>
     <!--  <CardBody>

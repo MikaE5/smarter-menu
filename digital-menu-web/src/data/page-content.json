@@ -2,6 +2,9 @@
   "header": {
     "title": "menu.online"
   },
+  "categories": {
+    "homeBreadCrumb": "Home"
+  },
   "bookmarks": {
     "noItems": "Keine Einträge in der Merkliste."
   },
