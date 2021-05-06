@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
+
   import {
     Card,
     CardText,
@@ -10,16 +12,16 @@
     ModalHeader,
     ModalBody,
   } from 'sveltestrap';
-  import { addToBookmarks } from '../bookmarks/bookmarks.util';
+  import { addToBookmarks, getBookmarkMap } from '../bookmarks/bookmarks.util';
   import { getCategoryImagePath } from '../util/image.util';
   import { getPriceString } from '../util/price.util';
   import type { MenuItem } from './model/menu-item.interface';
-  import ClickIcon from './shared/ClickIcon.svelte';
   import CounterIcon from './shared/CounterIcon.svelte';
   export let menuItem: MenuItem;
 
   let imgSrc: string;
   let priceString: string;
+  let bookmarkCounter: number = 0;
 
   $: {
     imgSrc = getCategoryImagePath(menuItem.image);
@@ -28,8 +30,19 @@
     priceString = getPriceString(menuItem.price.amount, menuItem.price.unit);
   }
 
+  const bookmarkSubscription = getBookmarkMap().subscribe((map) => {
+    const counter = map[menuItem.id];
+    if (counter !== undefined) {
+      bookmarkCounter = counter;
+    }
+  });
+
   let open = false;
   const toggle = () => (open = !open);
+
+  onDestroy(() => {
+    bookmarkSubscription.unsubscribe();
+  });
 </script>
 
 <div>
@@ -50,7 +63,7 @@
                 <CounterIcon
                   click={() => addToBookmarks(menuItem.id)}
                   icon="plus-circle"
-                  counter={0}
+                  counter={bookmarkCounter}
                 />
               </div>
             </Col>

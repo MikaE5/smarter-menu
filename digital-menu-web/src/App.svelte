@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-navigator';
+  import { deleteOldLocalStorageVersions } from './bookmarks/bookmarks.util';
   import Bookmarks from './components/Bookmarks.svelte';
   import Categories from './components/Categories.svelte';
   import DataPrivacy from './components/DataPrivacy.svelte';
   import Footer from './components/Footer.svelte';
   import Header from './components/Header.svelte';
   import MenuItems from './components/MenuItems.svelte';
-  import CounterIcon from './components/shared/CounterIcon.svelte';
   import { getRouteToCategory } from './components/util/category.util';
   import { getCategories } from './data/data.util';
   import pageContent from './data/page-content.json';
@@ -23,6 +23,10 @@
   const emptyItemsMessage = pageContent.bookmarks.noItems;
   const { slogan, dataPrivacy } = pageContent['footer'];
   const homeBreadCrumb = pageContent['categories'].homeBreadCrumb;
+
+  setTimeout(() => {
+    deleteOldLocalStorageVersions();
+  }, 500);
 </script>
 
 <svelte:head>
