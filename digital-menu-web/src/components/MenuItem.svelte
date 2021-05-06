@@ -15,6 +15,7 @@
   import { getPriceString } from '../util/price.util';
   import type { MenuItem } from './model/menu-item.interface';
   import ClickIcon from './shared/ClickIcon.svelte';
+  import CounterIcon from './shared/CounterIcon.svelte';
   export let menuItem: MenuItem;
 
   let imgSrc: string;
@@ -46,9 +47,10 @@
             <Col>
               <div class="d-flex justify-content-between">
                 <CardTitle>{menuItem.name}</CardTitle>
-                <ClickIcon
+                <CounterIcon
                   click={() => addToBookmarks(menuItem.id)}
                   icon="plus-circle"
+                  counter={0}
                 />
               </div>
             </Col>

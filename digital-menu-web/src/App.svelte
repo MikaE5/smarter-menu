@@ -6,6 +6,7 @@
   import Footer from './components/Footer.svelte';
   import Header from './components/Header.svelte';
   import MenuItems from './components/MenuItems.svelte';
+  import CounterIcon from './components/shared/CounterIcon.svelte';
   import { getRouteToCategory } from './components/util/category.util';
   import { getCategories } from './data/data.util';
   import pageContent from './data/page-content.json';
