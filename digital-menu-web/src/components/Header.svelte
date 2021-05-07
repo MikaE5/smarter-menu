@@ -10,19 +10,18 @@
     Nav,
     NavLink,
   } from 'sveltestrap';
-  import { getBookmarkMap } from '../bookmarks/bookmarks.util';
-  import ClickIcon from './shared/ClickIcon.svelte';
+  import {
+    addBookmarkOverallCountListener,
+    removeBookmarkOverallCountListener,
+  } from '../bookmarks/bookmarks.util';
   import CounterIcon from './shared/CounterIcon.svelte';
 
   export let title: string;
   export let navItems: Array<{ title: string; route: string }>;
   let counter: number = 0;
-  const bookmarkSubscription = getBookmarkMap().subscribe((map) => {
-    counter = Object.values(map).reduce(
-      (counter, item) => (counter += item),
-      0
-    );
-  });
+  const counterListenerId = addBookmarkOverallCountListener(
+    (count: number) => (counter = count)
+  );
 
   let isOpen = false;
   const toggle = () => (isOpen = !isOpen);
@@ -33,7 +32,7 @@
   };
 
   onDestroy(() => {
-    bookmarkSubscription.unsubscribe();
+    removeBookmarkOverallCountListener(counterListenerId);
   });
 </script>
 

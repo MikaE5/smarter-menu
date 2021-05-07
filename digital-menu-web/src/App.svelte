@@ -1,6 +1,11 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
+
   import { Router, Route } from 'svelte-navigator';
-  import { deleteOldLocalStorageVersions } from './bookmarks/bookmarks.util';
+  import {
+    deleteOldLocalStorageVersions,
+    removeAllBookmarkSubscriptions,
+  } from './bookmarks/bookmarks.util';
   import Bookmarks from './components/Bookmarks.svelte';
   import Categories from './components/Categories.svelte';
   import DataPrivacy from './components/DataPrivacy.svelte';
@@ -29,6 +34,10 @@
   setTimeout(() => {
     deleteOldLocalStorageVersions();
   }, 500);
+
+  onDestroy(() => {
+    removeAllBookmarkSubscriptions();
+  });
 </script>
 
 <svelte:head>

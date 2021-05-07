@@ -1,17 +1,14 @@
 [
   {
     "name": "Kuchen",
-    "id": "category/cake",
-    "image": "category-cake.jpg"
+    "id": "category/cake"
   },
   {
     "name": "Getränke",
-    "id": "category/drinks",
-    "image": "category-drinks.jpg"
+    "id": "category/drinks"
   },
   {
     "id": "category/breakfast",
-    "name": "Frühstück",
-    "image": "category-breakfast.jpg"
+    "name": "Frühstück"
   }
 ]

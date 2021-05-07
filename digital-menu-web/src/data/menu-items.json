@@ -7,7 +7,8 @@
       "amount": 2.3,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "coffee.jpg",
+    "classifications": ["classification/vegetarian"]
   },
   {
     "id": "menu-item/sparkling-water",
@@ -17,17 +18,20 @@
       "amount": 1.75,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "sparkling-water.jpg",
+    "classifications": ["classification/vegetarian", "classification/vegan"]
   },
   {
-    "id": "menu-item/capuccino",
+    "id": "menu-item/cappuccino",
     "name": "Cappuccino",
     "categories": ["category/drinks"],
     "price": {
       "amount": 2.4,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "cappuccino.jpg",
+    "classifications": ["classification/vegetarian"],
+    "allergens": ["allergen/milk"]
   },
   {
     "id": "menu-item/apple-cake",
@@ -37,7 +41,9 @@
       "amount": 3.1,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "apple-cake.jpg",
+    "classifications": ["classification/vegetarian"],
+    "allergens": ["allergen/milk", "allergen/hazelnut", "allergen/wheat"]
   },
   {
     "id": "menu-item/strawberry-cake",
@@ -47,7 +53,8 @@
       "amount": 3.1,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "strawberry-cake.jpg",
+    "allergens": ["allergen/milk", "allergen/hazelnut", "allergen/wheat"]
   },
   {
     "id": "menu-item/scrambled-eggs-with-bacon",
@@ -57,7 +64,7 @@
       "amount": 4.65,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "scrambled-eggs-with-bacon.jpg"
   },
   {
     "id": "menu-item/hardboiled-egg",
@@ -67,6 +74,6 @@
       "amount": 2.55,
       "unit": "€"
     },
-    "image": "category-breakfast.jpg"
+    "image": "hardboiled-egg.jpg"
   }
 ]

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getCategories } from '../data/data.util';
   import Category from './Category.svelte';
-  import type { Category as CategoryType } from './model/category.interface';
+  import type { Category as CategoryType } from '../data/model/category.interface';
   import { Row, Col } from 'sveltestrap';
 
   const categories: CategoryType[] = getCategories();

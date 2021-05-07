@@ -1,23 +1,24 @@
 <script lang="ts">
   import {
     addToBookmarks,
-    deleteFromBookmarks,
-    getBookmarkMap,
     reduceBookmark,
+    removeBookmarksListener,
+    addBookmarksListener,
   } from '../bookmarks/bookmarks.util';
   import { getMenuItems } from '../data/data.util';
-  import type { MenuItem } from '../components/model/menu-item.interface';
   import { Table } from 'sveltestrap';
   import { getPriceString } from '../util/price.util';
-  import ClickIcon from './shared/ClickIcon.svelte';
   import { onDestroy } from 'svelte';
   import Counter from './shared/Counter.svelte';
+  import type { BookmarkMap } from '../bookmarks/model/bookmark-map.interface';
+  import type { MenuItem } from '../data/model/menu-item.interface';
 
   export let emptyItemsMessage: string;
   let totalAmount: number;
   let defaultPriceUnit: string;
   let bookmarks: Array<{ count: number; item: MenuItem }> = [];
-  const bookmarkSubscription = getBookmarkMap().subscribe((map) => {
+
+  const listenerId = addBookmarksListener((map: BookmarkMap) => {
     const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
     bookmarks = menuItems.map((item) => {
       return {
@@ -34,7 +35,7 @@
   });
 
   onDestroy(() => {
-    bookmarkSubscription.unsubscribe();
+    removeBookmarksListener(listenerId);
   });
 </script>
 

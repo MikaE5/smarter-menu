@@ -1,8 +1,8 @@
 <script lang="ts">
   import { Icon, Card, CardHeader, CardTitle } from 'sveltestrap';
-  import type { Category } from './model/category.interface';
   import { getRouteToCategory } from './util/category.util';
   import { useNavigate } from 'svelte-navigator';
+  import type { Category } from '../data/model/category.interface';
   export let category: Category;
 
   const navigate = useNavigate();
