@@ -12,10 +12,15 @@
     ModalHeader,
     ModalBody,
   } from 'sveltestrap';
-  import { addToBookmarks, getBookmarkMap } from '../bookmarks/bookmarks.util';
+  import {
+    addToBookmarks,
+    getBookmarkMap,
+    reduceBookmark,
+  } from '../bookmarks/bookmarks.util';
   import { getCategoryImagePath } from '../util/image.util';
   import { getPriceString } from '../util/price.util';
   import type { MenuItem } from './model/menu-item.interface';
+  import Counter from './shared/Counter.svelte';
   import CounterIcon from './shared/CounterIcon.svelte';
   export let menuItem: MenuItem;
 
@@ -32,9 +37,7 @@
 
   const bookmarkSubscription = getBookmarkMap().subscribe((map) => {
     const counter = map[menuItem.id];
-    if (counter !== undefined) {
-      bookmarkCounter = counter;
-    }
+    bookmarkCounter = counter !== undefined ? counter : 0;
   });
 
   let open = false;
@@ -60,9 +63,9 @@
             <Col>
               <div class="d-flex justify-content-between">
                 <CardTitle>{menuItem.name}</CardTitle>
-                <CounterIcon
-                  click={() => addToBookmarks(menuItem.id)}
-                  icon="plus-circle"
+                <Counter
+                  increase={() => addToBookmarks(menuItem.id)}
+                  decrease={() => reduceBookmark(menuItem.id)}
                   counter={bookmarkCounter}
                 />
               </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import {
+    addToBookmarks,
     deleteFromBookmarks,
     getBookmarkMap,
     reduceBookmark,
@@ -10,6 +11,7 @@
   import { getPriceString } from '../util/price.util';
   import ClickIcon from './shared/ClickIcon.svelte';
   import { onDestroy } from 'svelte';
+  import Counter from './shared/Counter.svelte';
 
   export let emptyItemsMessage: string;
   let totalAmount: number;
@@ -42,13 +44,14 @@
       {#each bookmarks as bookmark, i}
         <tr class={i === bookmarks.length - 1 ? '' : 'border-bottom'}>
           <td>{bookmark.item.name}</td>
-          <td
-            ><ClickIcon
-              icon="dash-circle"
-              click={() => reduceBookmark(bookmark.item.id)}
+
+          <td>
+            <Counter
+              counter={bookmark.count}
+              increase={() => addToBookmarks(bookmark.item.id)}
+              decrease={() => reduceBookmark(bookmark.item.id)}
             /></td
           >
-          <td>{bookmark.count}</td>
           <td
             >{getPriceString(
               bookmark.item.price.amount,
@@ -58,7 +61,6 @@
         </tr>
       {/each}
       <tr class="border-top border-danger">
-        <td />
         <td />
         <td />
         <td>{getPriceString(totalAmount, defaultPriceUnit)}</td>
