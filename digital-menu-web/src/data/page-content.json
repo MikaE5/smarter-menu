@@ -5,6 +5,9 @@
   "categories": {
     "homeBreadCrumb": "Home"
   },
+  "menuItems": {
+    "allergens": "Allergene"
+  },
   "bookmarks": {
     "noItems": "Keine Einträge in der Merkliste.",
     "title": "Merkliste"

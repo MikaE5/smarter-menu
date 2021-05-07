@@ -30,6 +30,7 @@
   const bookmarksTitle = pageContent.bookmarks.title;
   const { slogan, dataPrivacy } = pageContent['footer'];
   const homeBreadCrumb = pageContent['categories'].homeBreadCrumb;
+  const allergensLabel = pageContent.menuItems.allergens;
 
   setTimeout(() => {
     deleteOldLocalStorageVersions();
@@ -65,7 +66,10 @@
           {homeBreadCrumb}
           activeItem={getCategoryNameForId(decodeURIComponent(params.category))}
         />
-        <MenuItems categoryId={decodeURIComponent(params.category)} />
+        <MenuItems
+          {allergensLabel}
+          categoryId={decodeURIComponent(params.category)}
+        />
       </Route>
       <Route path="/bookmarks" primary={false}>
         <HomeBreadCrumb {homeBreadCrumb} activeItem={bookmarksTitle} />

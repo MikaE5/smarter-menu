@@ -8,6 +8,7 @@
   import MenuItem from './MenuItem.svelte';
 
   export let categoryId: string;
+  export let allergensLabel: string;
 
   let menuItems: MenuItemType[];
   let categoryName: string;
@@ -21,7 +22,7 @@
 <Row cols={1}>
   {#each menuItems as menuItem}
     <Col class="mb-1 mt-1">
-      <MenuItem {menuItem} />
+      <MenuItem {allergensLabel} {menuItem} />
     </Col>
   {/each}
 </Row>

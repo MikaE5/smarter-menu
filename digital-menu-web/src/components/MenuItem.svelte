@@ -26,6 +26,7 @@
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
   export let menuItem: MenuItem;
+  export let allergensLabel: string;
 
   let imgSrc: string;
   let priceString: string;
@@ -89,7 +90,7 @@
                 <CardText>{priceString}</CardText>
                 {#if menuItem.allergens}
                   <IconButton
-                    label="Allergene"
+                    label={allergensLabel}
                     icon="info-circle"
                     click={toggleAllergensModal}
                   />

@@ -12,8 +12,8 @@
   }
 </script>
 
-<div class="d-flex">
-  {#each allergens as allergen, i}
-    <Badge color="secondary">{allergen.name}</Badge>
+<div class="d-flex flex-wrap">
+  {#each allergens as allergen}
+    <Badge color="secondary" class="mr-1 mb-1">{allergen.name}</Badge>
   {/each}
 </div>
