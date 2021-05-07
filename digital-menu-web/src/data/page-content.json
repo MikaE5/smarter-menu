@@ -6,7 +6,8 @@
     "homeBreadCrumb": "Home"
   },
   "bookmarks": {
-    "noItems": "Keine Einträge in der Merkliste."
+    "noItems": "Keine Einträge in der Merkliste.",
+    "title": "Merkliste"
   },
   "footer": {
     "slogan": "made possible with menu.online",

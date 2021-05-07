@@ -43,7 +43,7 @@
     <tbody>
       {#each bookmarks as bookmark, i}
         <tr class={i === bookmarks.length - 1 ? '' : 'border-bottom'}>
-          <td>{bookmark.item.name}</td>
+          <td><span>{bookmark.item.name}</span></td>
 
           <td>
             <Counter
@@ -52,18 +52,31 @@
               decrease={() => reduceBookmark(bookmark.item.id)}
             /></td
           >
-          <td
-            >{getPriceString(
-              bookmark.item.price.amount,
-              bookmark.item.price.unit
-            )}</td
-          >
+          <td>
+            <span class="d-flex justify-content-end">
+              {getPriceString(
+                bookmark.item.price.amount,
+                bookmark.item.price.unit
+              )}</span
+            >
+          </td>
+          <!-- <td>
+            <ClickIcon
+              icon="x-square"
+              click={() => deleteFromBookmarks(bookmark.item.id)}
+            />
+          </td> -->
         </tr>
       {/each}
       <tr class="border-top border-danger">
         <td />
         <td />
-        <td>{getPriceString(totalAmount, defaultPriceUnit)}</td>
+        <td
+          ><span class="d-flex justify-content-end"
+            >{getPriceString(totalAmount, defaultPriceUnit)}</span
+          ></td
+        >
+        <!--   <td /> -->
       </tr>
     </tbody>
   </Table>

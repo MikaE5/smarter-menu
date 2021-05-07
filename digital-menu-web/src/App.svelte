@@ -6,9 +6,10 @@
   import DataPrivacy from './components/DataPrivacy.svelte';
   import Footer from './components/Footer.svelte';
   import Header from './components/Header.svelte';
+  import HomeBreadCrumb from './components/HomeBreadCrumb.svelte';
   import MenuItems from './components/MenuItems.svelte';
   import { getRouteToCategory } from './components/util/category.util';
-  import { getCategories } from './data/data.util';
+  import { getCategories, getCategoryNameForId } from './data/data.util';
   import pageContent from './data/page-content.json';
 
   const navItems: Array<{ title: string; route: string }> = getCategories().map(
@@ -21,6 +22,7 @@
   );
   const title = pageContent.header.title;
   const emptyItemsMessage = pageContent.bookmarks.noItems;
+  const bookmarksTitle = pageContent.bookmarks.title;
   const { slogan, dataPrivacy } = pageContent['footer'];
   const homeBreadCrumb = pageContent['categories'].homeBreadCrumb;
 
@@ -46,19 +48,22 @@
       <Header {navItems} {title} />
     </header>
     <main class="flex-grow-1">
-      <Route path="/">
+      <Route path="/" primary={false}>
         <Categories />
       </Route>
       <Route path="category/:category" primary={false} let:params>
-        <MenuItems
+        <HomeBreadCrumb
           {homeBreadCrumb}
-          categoryId={decodeURIComponent(params.category)}
+          activeItem={getCategoryNameForId(decodeURIComponent(params.category))}
         />
+        <MenuItems categoryId={decodeURIComponent(params.category)} />
       </Route>
-      <Route path="/bookmarks">
+      <Route path="/bookmarks" primary={false}>
+        <HomeBreadCrumb {homeBreadCrumb} activeItem={bookmarksTitle} />
         <Bookmarks {emptyItemsMessage} />
       </Route>
       <Route path="/privacy">
+        <HomeBreadCrumb {homeBreadCrumb} activeItem={dataPrivacy} />
         <DataPrivacy />
       </Route>
     </main>
