@@ -17,7 +17,7 @@
     reduceBookmark,
     addBookmarkCountListener,
     removeBookmarkCountListener,
-  } from '../bookmarks/bookmarks.util';
+  } from '../bookmarks/bookmarks';
   import type { MenuItem } from '../data/model/menu-item.interface';
   import { getMenuItemImagePath } from '../util/image.util';
   import { getPriceString } from '../util/price.util';

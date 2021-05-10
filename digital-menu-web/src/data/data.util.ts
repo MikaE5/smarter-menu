@@ -1,10 +1,10 @@
 import type { Category } from './model/category.interface';
 import type { Classification } from './model/classification.interface';
 import type { MenuItem } from './model/menu-item.interface';
-import categories from './categories.json';
-import menuItems from './menu-items.json';
-import classifications from './classifications.json';
-import allergens from './allergens.json';
+import categories from './menu-data/categories.json';
+import menuItems from './menu-data/menu-items.json';
+import classifications from './menu-data/classifications.json';
+import allergens from './menu-data/allergens.json';
 import type { Allergen } from './model/allergen.interface';
 
 const CATEGORIES: Category[] = categories;

@@ -5,7 +5,7 @@
   import {
     deleteOldLocalStorageVersions,
     removeAllBookmarkSubscriptions,
-  } from './bookmarks/bookmarks.util';
+  } from './bookmarks/bookmarks';
   import Bookmarks from './components/Bookmarks.svelte';
   import Categories from './components/Categories.svelte';
   import DataPrivacy from './components/DataPrivacy.svelte';
@@ -15,7 +15,7 @@
   import MenuItems from './components/MenuItems.svelte';
   import { getRouteToCategory } from './components/util/category.util';
   import { getCategories, getCategoryNameForId } from './data/data.util';
-  import pageContent from './data/page-content.json';
+  import pageContent from './data/menu-data/page-content.json';
 
   const navItems: Array<{ title: string; route: string }> = getCategories().map(
     (category) => {

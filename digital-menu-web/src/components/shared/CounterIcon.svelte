@@ -1,13 +1,17 @@
 <script lang="ts">
   import ClickIcon from './ClickIcon.svelte';
   export let icon: string;
-  export let counter: number;
+  export let counter: number | string;
   export let click: (e) => void;
 
   let counterText;
 
   $: {
-    counterText = counter > 0 ? counter : '';
+    if (typeof counter === 'number') {
+      counterText = counter > 0 ? counter : '';
+    } else {
+      counterText = counter;
+    }
   }
 </script>
 

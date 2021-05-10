@@ -1,12 +1,20 @@
 import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { getMenuItems } from '../data/data.util';
+import type { MenuItem } from '../data/model/menu-item.interface';
 import type { BookmarkMap } from './model/bookmark-map.interface';
+import type {
+  BookmarkInfo,
+  BookmarkPriceInfo,
+} from './model/bookmark-info.interface';
+import { getPriceInfo } from './util/bookmarks.util';
 
 const LOCAL_STORAGE_PREFIX = 'DIGITAL_MENU';
 const BOOKMARKS_PREFIX = LOCAL_STORAGE_PREFIX + '_bookmarks_v';
 const VERSION = 1;
 const BOOKMARKS = BOOKMARKS_PREFIX + VERSION;
 const BOOKMARK_OVERALL_COUNT_LISTENER = '$bookmark_overall_count$!';
+const BOOKMARK_OVERALL_PRICE_LISTENER = '$bookmark_overall_price$!';
 const BOOKMARKS_LISTENER = '$bookmark$!';
 
 export const deleteOldLocalStorageVersions = () => {
@@ -95,12 +103,39 @@ export const addBookmarkOverallCountListener = (
 export const removeBookmarkOverallCountListener = (listenerId: number) =>
   removeListener(BOOKMARK_OVERALL_COUNT_LISTENER, listenerId);
 
+export const removeBookmarkOverallPriceListener = (listenerId: number) =>
+  removeListener(BOOKMARK_OVERALL_PRICE_LISTENER, listenerId);
+
+export const addBookmarkOverallPriceListener = (
+  listener: (price: number, unit: string) => void
+): number => {
+  return addListener(
+    BOOKMARK_OVERALL_PRICE_LISTENER,
+    bookmarks$.subscribe((map: BookmarkMap) => {
+      const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
+      const { price, unit } = getPriceInfo(map, menuItems);
+
+      listener(price, unit);
+    })
+  );
+};
+
 export const addBookmarksListener = (
-  listener: (map: BookmarkMap) => void
+  listener: (bookmarkInfo: BookmarkInfo) => void
 ): number => {
   return addListener(
     BOOKMARKS_LISTENER,
-    bookmarks$.subscribe((map: BookmarkMap) => listener(map))
+    bookmarks$.subscribe((map: BookmarkMap) => {
+      const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
+      const items = menuItems.map((item) => {
+        return {
+          item,
+          amount: map[item.id],
+        };
+      });
+      const priceInfo = getPriceInfo(map, menuItems);
+      listener({ items, priceInfo });
+    })
   );
 };
 

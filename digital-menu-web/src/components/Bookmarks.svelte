@@ -2,36 +2,25 @@
   import {
     addToBookmarks,
     reduceBookmark,
-    removeBookmarksListener,
     addBookmarksListener,
-  } from '../bookmarks/bookmarks.util';
-  import { getMenuItems } from '../data/data.util';
+    removeBookmarksListener,
+  } from '../bookmarks/bookmarks';
   import { Table } from 'sveltestrap';
   import { getPriceString } from '../util/price.util';
   import { onDestroy } from 'svelte';
   import Counter from './shared/Counter.svelte';
-  import type { BookmarkMap } from '../bookmarks/model/bookmark-map.interface';
-  import type { MenuItem } from '../data/model/menu-item.interface';
+  import type {
+    BookmarkInfo,
+    BookmarkItem,
+  } from '../bookmarks/model/bookmark-info.interface';
 
   export let emptyItemsMessage: string;
-  let totalAmount: number;
-  let defaultPriceUnit: string;
-  let bookmarks: Array<{ count: number; item: MenuItem }> = [];
+  let totalPrice: string;
+  let bookmarks: BookmarkItem[] = [];
 
-  const listenerId = addBookmarksListener((map: BookmarkMap) => {
-    const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
-    bookmarks = menuItems.map((item) => {
-      return {
-        item,
-        count: map[item.id],
-      };
-    });
-    totalAmount = bookmarks.reduce(
-      (previousCount: number, entry: { item: MenuItem; count: number }) =>
-        (previousCount += entry.count * entry.item.price.amount),
-      0
-    );
-    defaultPriceUnit = menuItems.length > 0 ? menuItems[0].price.unit : '';
+  const listenerId = addBookmarksListener((info: BookmarkInfo) => {
+    totalPrice = getPriceString(info.priceInfo.price, info.priceInfo.unit);
+    bookmarks = info.items;
   });
 
   onDestroy(() => {
@@ -39,7 +28,7 @@
   });
 </script>
 
-{#if totalAmount !== 0}
+{#if bookmarks.length !== 0}
   <Table borderless responsive>
     <tbody>
       {#each bookmarks as bookmark, i}
@@ -48,7 +37,7 @@
 
           <td>
             <Counter
-              counter={bookmark.count}
+              counter={bookmark.amount}
               increase={() => addToBookmarks(bookmark.item.id)}
               decrease={() => reduceBookmark(bookmark.item.id)}
             /></td
@@ -72,11 +61,7 @@
       <tr class="border-top border-danger">
         <td />
         <td />
-        <td
-          ><span class="d-flex justify-content-end"
-            >{getPriceString(totalAmount, defaultPriceUnit)}</span
-          ></td
-        >
+        <td><span class="d-flex justify-content-end">{totalPrice}</span></td>
         <!--   <td /> -->
       </tr>
     </tbody>

@@ -11,16 +11,20 @@
     NavLink,
   } from 'sveltestrap';
   import {
-    addBookmarkOverallCountListener,
-    removeBookmarkOverallCountListener,
-  } from '../bookmarks/bookmarks.util';
+    addBookmarkOverallPriceListener,
+    removeBookmarkOverallPriceListener,
+  } from '../bookmarks/bookmarks';
+  import { getPriceString } from '../util/price.util';
   import CounterIcon from './shared/CounterIcon.svelte';
 
   export let title: string;
   export let navItems: Array<{ title: string; route: string }>;
-  let counter: number = 0;
-  const counterListenerId = addBookmarkOverallCountListener(
-    (count: number) => (counter = count)
+
+  let overallPrice: string = '';
+  const priceListenerId = addBookmarkOverallPriceListener(
+    (price: number, unit: string) => {
+      overallPrice = getPriceString(price, unit);
+    }
   );
 
   let isOpen = false;
@@ -32,7 +36,7 @@
   };
 
   onDestroy(() => {
-    removeBookmarkOverallCountListener(counterListenerId);
+    removeBookmarkOverallPriceListener(priceListenerId);
   });
 </script>
 
@@ -43,7 +47,7 @@
   <CounterIcon
     icon="bookmark"
     click={() => navigateTo('/bookmarks')}
-    {counter}
+    counter={overallPrice}
   />
   <NavbarToggler on:click={toggle} class="ml-2" />
   <Collapse {isOpen} navbar>
