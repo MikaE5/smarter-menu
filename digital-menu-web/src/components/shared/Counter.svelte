@@ -6,10 +6,10 @@
   export let increase: (e) => void;
 </script>
 
-<div class="d-flex">
+<div class="d-flex align-items-center">
   {#if counter > 0}
     <ClickIcon icon="dash-circle" click={decrease} />
-    <span class="mr-1 ml-1">{counter}</span>
+    <span class="mr-2 ml-2">{counter}</span>
   {/if}
   <ClickIcon icon="plus-circle" click={increase} />
 </div>

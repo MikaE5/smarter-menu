@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Icon, Button, Badge } from 'sveltestrap';
+  import { Icon } from 'sveltestrap';
 
   export let label: string;
   export let icon: string;
