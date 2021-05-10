@@ -6,7 +6,7 @@ export interface MenuItem {
     amount: number;
     unit: string;
   };
-  image: string;
+  image?: string;
   classifications?: string[];
   allergens?: string[];
 }

@@ -51,7 +51,7 @@
   />
   <NavbarToggler on:click={toggle} class="ml-2" />
   <Collapse {isOpen} navbar>
-    <Nav navbar>
+    <Nav navbar justified>
       {#each navItems as navItem}
         <NavLink on:click={() => navigateTo(navItem.route)}
           >{navItem.title}</NavLink

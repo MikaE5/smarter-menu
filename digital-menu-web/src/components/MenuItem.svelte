@@ -23,6 +23,7 @@
   import { getPriceString } from '../util/price.util';
   import Allergens from './Allergens.svelte';
   import Classifications from './Classifications.svelte';
+  import ConditionalImg from './shared/ConditionalImg.svelte';
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
   export let menuItem: MenuItem;
@@ -61,13 +62,13 @@
 <div>
   <Card color="light">
     <CardHeader>
-      <div class="d-flex">
-        <img
-          on:click={toggleImageModal}
-          src={imgSrc}
-          alt=""
+      <div class="d-flex img-parent">
+        <ConditionalImg
           class="menu-item-image mr-2"
+          click={toggleImageModal}
+          src={imgSrc}
         />
+
         <div class="flex-grow-1">
           <Row cols={1}>
             <Col>
@@ -118,7 +119,11 @@
 </div>
 
 <style>
-  .menu-item-image {
+  .modal-image {
+    max-width: 100%;
+  }
+
+  .img-parent :global(.menu-item-image) {
     object-fit: cover;
     width: 20vw;
     height: 20vw;
@@ -126,9 +131,5 @@
     min-height: 20vw;
     max-width: 20vw;
     max-height: 20vw;
-  }
-
-  .modal-image {
-    max-width: 100%;
   }
 </style>
