@@ -23,7 +23,7 @@
   let overallPrice: string = '';
   const priceListenerId = addBookmarkOverallPriceListener(
     (price: number, unit: string) => {
-      overallPrice = getPriceString(price, unit);
+      overallPrice = price > 0 ? getPriceString(price, unit) : '';
     }
   );
 

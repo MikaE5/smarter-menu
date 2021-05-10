@@ -2,13 +2,14 @@
   import ClickIcon from './ClickIcon.svelte';
   export let icon: string;
   export let counter: number | string;
+  export let hideZero: boolean = true;
   export let click: (e) => void;
 
   let counterText;
 
   $: {
-    if (typeof counter === 'number') {
-      counterText = counter > 0 ? counter : '';
+    if (typeof counter === 'number' && counter === 0 && hideZero) {
+      counterText = '';
     } else {
       counterText = counter;
     }
