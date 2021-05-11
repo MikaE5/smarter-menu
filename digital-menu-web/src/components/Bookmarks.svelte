@@ -13,16 +13,13 @@
     BookmarkInfo,
     BookmarkItem,
   } from '../bookmarks/model/bookmark-info.interface';
-
   export let emptyItemsMessage: string;
   let totalPrice: string;
   let bookmarks: BookmarkItem[] = [];
-
   const listenerId = addBookmarksListener((info: BookmarkInfo) => {
     totalPrice = getPriceString(info.priceInfo.price, info.priceInfo.unit);
     bookmarks = info.items;
   });
-
   onDestroy(() => {
     removeBookmarksListener(listenerId);
   });

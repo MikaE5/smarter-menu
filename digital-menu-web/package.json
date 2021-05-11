@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/inject-customer-data.js menu.online",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear --single",
