@@ -6,6 +6,10 @@ if (customer === undefined) {
   throw new Error('No customer defined!');
 }
 
+console.log(
+  `\n\n### Start injecting customer data for customer: ${customer} ###\n`
+);
+
 const CWD = process.cwd(); // will be digital-menu-web since this script will be executed from prebuild in package.json
 const DATA_FOLDER = path.join(CWD, '..', 'customer-data', customer);
 const WEB_FOLDER = path.join(CWD, 'src', 'data', 'menu-data');
@@ -39,3 +43,7 @@ for (const file of FILES_TO_COPY) {
     }
   }
 }
+
+console.log(
+  `\n### Successfully injected customer data for customer: ${customer} ###\n\n`
+);
