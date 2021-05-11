@@ -6,13 +6,20 @@ import menuItems from './menu-data/menu-items.json';
 import classifications from './menu-data/classifications.json';
 import allergens from './menu-data/allergens.json';
 import type { Allergen } from './model/allergen.interface';
+import type { CategoryType } from './model/category-type.enum';
 
-const CATEGORIES: Category[] = categories;
+const CATEGORIES: Category[] = categories as Category[];
 const MENU_ITEMS: MenuItem[] = menuItems;
 const CLASSIFICATIONS: Classification[] = classifications;
 const ALLERGENS: Allergen[] = allergens;
 
-export const getCategories = (): Category[] => CATEGORIES;
+export const getCategoriesByType = (type: CategoryType): Category[] =>
+  CATEGORIES.filter((cat) => cat.category_type === type);
+
+export const getCategories = (ids: string[]): Category[] => {
+  const idSet = new Set(ids);
+  return CATEGORIES.filter(({ id }) => idSet.has(id));
+};
 
 export const getMenuItemsForCategory = (categoryId: string): MenuItem[] =>
   MENU_ITEMS.filter((item: MenuItem) => item.categories.includes(categoryId));

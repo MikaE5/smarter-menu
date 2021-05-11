@@ -2,7 +2,7 @@
   {
     "id": "menu-item/coffee",
     "name": "Kaffee",
-    "categories": ["category/drinks"],
+    "categories": ["category/non-alcoholic-drinks"],
     "price": {
       "amount": 2.3,
       "unit": "€"
@@ -13,7 +13,7 @@
   {
     "id": "menu-item/sparkling-water",
     "name": "Spritziges Mineralwasser",
-    "categories": ["category/drinks"],
+    "categories": ["category/non-alcoholic-drinks"],
     "price": {
       "amount": 1.75,
       "unit": "€"
@@ -24,7 +24,7 @@
   {
     "id": "menu-item/cappuccino",
     "name": "Cappuccino",
-    "categories": ["category/drinks"],
+    "categories": ["category/non-alcoholic-drinks"],
     "price": {
       "amount": 2.4,
       "unit": "€"
@@ -32,6 +32,24 @@
     "image": "cappuccino.jpg",
     "classifications": ["classification/vegetarian"],
     "allergens": ["allergen/milk"]
+  },
+  {
+    "id": "menu-item/red-wine",
+    "name": "Rotwein",
+    "categories": ["category/alcoholic-drinks"],
+    "price": {
+      "amount": 4.6,
+      "unit": "€"
+    }
+  },
+  {
+    "id": "menu-item/wheat-beer",
+    "name": "Weizenbier",
+    "categories": ["category/alcoholic-drinks"],
+    "price": {
+      "amount": 4.2,
+      "unit": "€"
+    }
   },
   {
     "id": "menu-item/apple-cake",

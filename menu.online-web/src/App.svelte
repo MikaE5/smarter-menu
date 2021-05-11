@@ -14,17 +14,19 @@
   import HomeBreadCrumb from './components/HomeBreadCrumb.svelte';
   import MenuItems from './components/MenuItems.svelte';
   import { getRouteToCategory } from './components/util/category.util';
-  import { getCategories, getCategoryNameForId } from './data/data.util';
+  import { getCategoriesByType, getCategoryNameForId } from './data/data.util';
   import pageContent from './data/menu-data/page-content.json';
+  import { CategoryType } from './data/model/category-type.enum';
 
-  const navItems: Array<{ title: string; route: string }> = getCategories().map(
-    (category) => {
-      return {
-        title: category.name,
-        route: getRouteToCategory(category.id),
-      };
-    }
-  );
+  // get first level categories
+  const navItems: Array<{ title: string; route: string }> = getCategoriesByType(
+    CategoryType.C1
+  ).map((category) => {
+    return {
+      title: category.name,
+      route: getRouteToCategory(category.id),
+    };
+  });
   const title = pageContent.header.title;
   const emptyItemsMessage = pageContent.bookmarks.noItems;
   const bookmarksTitle = pageContent.bookmarks.title;

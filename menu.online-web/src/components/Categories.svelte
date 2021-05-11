@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { getCategories } from '../data/data.util';
+  import { getCategoriesByType } from '../data/data.util';
   import Category from './Category.svelte';
-  import type { Category as CategoryType } from '../data/model/category.interface';
+  import type { Category as ICategory } from '../data/model/category.interface';
   import { Row, Col } from 'sveltestrap';
+  import { CategoryType } from '../data/model/category-type.enum';
 
-  const categories: CategoryType[] = getCategories();
+  const categories: ICategory[] = getCategoriesByType(CategoryType.C1);
 </script>
 
 <Row cols={1}>
