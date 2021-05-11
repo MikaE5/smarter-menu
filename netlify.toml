@@ -1,4 +1,4 @@
 [build]
-  base="digital-menu-web/"
+  base="menu.online-web/"
   command = "npm run build"
   publish = "public/"
