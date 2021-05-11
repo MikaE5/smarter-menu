@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Kuchen",
+    "id": "category/cake"
+  },
+  {
+    "name": "Getränke",
+    "id": "category/drinks"
+  },
+  {
+    "id": "category/breakfast",
+    "name": "Frühstück"
+  }
+]

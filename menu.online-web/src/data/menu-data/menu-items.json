@@ -1,0 +1,79 @@
+[
+  {
+    "id": "menu-item/coffee",
+    "name": "Kaffee",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 2.3,
+      "unit": "€"
+    },
+    "image": "coffee.jpg",
+    "classifications": ["classification/vegetarian"]
+  },
+  {
+    "id": "menu-item/sparkling-water",
+    "name": "Spritziges Mineralwasser",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 1.75,
+      "unit": "€"
+    },
+    "image": "sparkling-water.jpg",
+    "classifications": ["classification/vegetarian", "classification/vegan"]
+  },
+  {
+    "id": "menu-item/cappuccino",
+    "name": "Cappuccino",
+    "categories": ["category/drinks"],
+    "price": {
+      "amount": 2.4,
+      "unit": "€"
+    },
+    "image": "cappuccino.jpg",
+    "classifications": ["classification/vegetarian"],
+    "allergens": ["allergen/milk"]
+  },
+  {
+    "id": "menu-item/apple-cake",
+    "name": "Apfelkuchen",
+    "categories": ["category/cake"],
+    "price": {
+      "amount": 3.1,
+      "unit": "€"
+    },
+    "image": "apple-cake.jpg",
+    "classifications": ["classification/vegetarian"],
+    "allergens": ["allergen/milk", "allergen/hazelnut", "allergen/wheat"]
+  },
+  {
+    "id": "menu-item/strawberry-cake",
+    "name": "Erdbeerkuchen",
+    "categories": ["category/cake"],
+    "price": {
+      "amount": 3.1,
+      "unit": "€"
+    },
+    "image": "strawberry-cake.jpg",
+    "allergens": ["allergen/milk", "allergen/hazelnut", "allergen/wheat"]
+  },
+  {
+    "id": "menu-item/scrambled-eggs-with-bacon",
+    "name": "Rührei mit Speck",
+    "categories": ["category/breakfast"],
+    "price": {
+      "amount": 4.65,
+      "unit": "€"
+    },
+    "image": "scrambled-eggs-with-bacon.jpg"
+  },
+  {
+    "id": "menu-item/hardboiled-egg",
+    "name": "Hartgekochtes Ei",
+    "categories": ["category/breakfast"],
+    "price": {
+      "amount": 2.55,
+      "unit": "€"
+    },
+    "image": "hardboiled-egg.jpg"
+  }
+]
