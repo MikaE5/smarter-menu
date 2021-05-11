@@ -1,14 +1,31 @@
 [
   {
     "name": "Kuchen",
-    "id": "category/cake"
+    "id": "category/cake",
+    "category_type": "C1"
   },
   {
     "name": "Getränke",
-    "id": "category/drinks"
+    "id": "category/drinks",
+    "category_type": "C1",
+    "sub_categories": [
+      "category/non-alcoholic-drinks",
+      "category/alcoholic-drinks"
+    ]
+  },
+  {
+    "name": "Alkoholfreie Getränke",
+    "id": "category/non-alcoholic-drinks",
+    "category_type": "C2"
+  },
+  {
+    "name": "Alkoholische Getränke",
+    "id": "category/alcoholic-drinks",
+    "category_type": "C2"
   },
   {
     "id": "category/breakfast",
-    "name": "Frühstück"
+    "name": "Frühstück",
+    "category_type": "C1"
   }
 ]
