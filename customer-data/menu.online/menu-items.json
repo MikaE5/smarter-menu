@@ -2,7 +2,7 @@
   {
     "id": "menu-item/coffee",
     "name": "Kaffee",
-    "categories": ["category/non-alcoholic-drinks"],
+    "categories": ["category/warm-drinks"],
     "price": {
       "amount": 2.3,
       "unit": "€"
@@ -13,7 +13,7 @@
   {
     "id": "menu-item/sparkling-water",
     "name": "Spritziges Mineralwasser",
-    "categories": ["category/non-alcoholic-drinks"],
+    "categories": ["category/cold-drinks"],
     "price": {
       "amount": 1.75,
       "unit": "€"
@@ -24,7 +24,7 @@
   {
     "id": "menu-item/cappuccino",
     "name": "Cappuccino",
-    "categories": ["category/non-alcoholic-drinks"],
+    "categories": ["category/warm-drinks"],
     "price": {
       "amount": 2.4,
       "unit": "€"
@@ -36,7 +36,7 @@
   {
     "id": "menu-item/red-wine",
     "name": "Rotwein",
-    "categories": ["category/alcoholic-drinks"],
+    "categories": ["category/cold-drinks"],
     "price": {
       "amount": 4.6,
       "unit": "€"
@@ -45,7 +45,7 @@
   {
     "id": "menu-item/wheat-beer",
     "name": "Weizenbier",
-    "categories": ["category/alcoholic-drinks"],
+    "categories": ["category/cold-drinks"],
     "price": {
       "amount": 4.2,
       "unit": "€"
