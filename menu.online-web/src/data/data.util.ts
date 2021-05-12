@@ -21,8 +21,29 @@ export const getCategories = (ids: string[]): Category[] => {
   return CATEGORIES.filter(({ id }) => idSet.has(id));
 };
 
-export const getMenuItemsForCategory = (categoryId: string): MenuItem[] =>
-  MENU_ITEMS.filter((item: MenuItem) => item.categories.includes(categoryId));
+export const getMenuItemsForCategory = (
+  categoryId: string,
+  getMenuItemsForSubCategories = false
+): MenuItem[] => {
+  let categoryIdSet: Set<string> = new Set([categoryId]);
+  if (getMenuItemsForSubCategories) {
+    const foundCategories = getCategories([categoryId]);
+    if (
+      foundCategories.length > 0 &&
+      foundCategories[0].sub_categories !== undefined
+    ) {
+      categoryIdSet = new Set([
+        ...categoryIdSet,
+        ...foundCategories[0].sub_categories,
+      ]);
+    }
+  }
+
+  return MENU_ITEMS.filter(
+    (item: MenuItem) =>
+      item.categories.findIndex((id) => categoryIdSet.has(id)) !== -1
+  );
+};
 
 export const getMenuItems = (ids: string[]): MenuItem[] => {
   const idSet = new Set(ids);

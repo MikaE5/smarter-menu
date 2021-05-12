@@ -14,7 +14,7 @@
   let categoryName: string;
   $: {
     // refetch menuItems if route param changes
-    menuItems = getMenuItemsForCategory(categoryId);
+    menuItems = getMenuItemsForCategory(categoryId, true);
     categoryName = getCategoryNameForId(categoryId);
   }
 </script>
