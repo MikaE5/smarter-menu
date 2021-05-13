@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fse = require('fs-extra');
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -14,7 +15,9 @@ console.log(
 
 const CWD = process.cwd(); // will be digital-menu-web since this script will be executed from prebuild in package.json
 const DATA_FOLDER = path.join(CWD, '..', 'customer-data', customer);
+const IMAGE_FOLDER = path.join(DATA_FOLDER, 'images');
 const WEB_FOLDER = path.join(CWD, 'src', 'data', 'menu-data');
+const PUBLIC_IMAGES_FOLDER = path.join(CWD, 'public', 'images');
 const FILES_TO_COPY = [
   'allergens.json',
   'categories.json',
@@ -44,6 +47,15 @@ for (const file of FILES_TO_COPY) {
       // fail such that build does not run through
       throw error;
     }
+  }
+}
+
+if (fs.existsSync(IMAGE_FOLDER)) {
+  try {
+    console.log('Copy images into public folder');
+    fse.copySync(IMAGE_FOLDER, PUBLIC_IMAGES_FOLDER);
+  } catch (error) {
+    throw error;
   }
 }
 
