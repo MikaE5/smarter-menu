@@ -3,7 +3,7 @@
 
   export let icon: string;
   export let click: (e) => void;
-  export let size: 1 | 2 | 3 | 4 | 5 | 6 = 5;
+  export let size: 1 | 2 | 3 | 4 | 5 | 6 = 4;
 </script>
 
 <div class={`h${size} reset-margin`} on:click={click}>
