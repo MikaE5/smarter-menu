@@ -40,7 +40,7 @@
   });
 </script>
 
-<Navbar color="secondary" light>
+<Navbar color="info" light>
   <NavbarBrand class="mr-auto" on:click={() => navigateTo('/')}
     >{title}</NavbarBrand
   >
@@ -53,7 +53,7 @@
   <Collapse {isOpen} navbar>
     <Nav navbar justified>
       {#each navItems as navItem}
-        <NavLink on:click={() => navigateTo(navItem.route)}
+        <NavLink color="primary" on:click={() => navigateTo(navItem.route)}
           >{navItem.title}</NavLink
         >
       {/each}

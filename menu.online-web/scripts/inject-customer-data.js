@@ -19,6 +19,7 @@ const FILES_TO_COPY = [
   'classifications.json',
   'menu-items.json',
   'page-content.json',
+  'config.json',
 ];
 
 if (!fs.existsSync(DATA_FOLDER)) {

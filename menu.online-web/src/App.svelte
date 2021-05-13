@@ -16,6 +16,7 @@
   import { getRouteToCategory } from './components/util/category.util';
   import { getCategoriesByType, getCategoryNameForId } from './data/data.util';
   import pageContent from './data/menu-data/page-content.json';
+  import config from './data/menu-data/config.json';
   import { CategoryType } from './data/model/category-type.enum';
 
   // get first level categories
@@ -44,14 +45,12 @@
 </script>
 
 <svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  />
+  <link rel="stylesheet" href={config.theme_url} />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
   />
+  <title>{pageContent.header.title}</title>
 </svelte:head>
 
 <Router>
