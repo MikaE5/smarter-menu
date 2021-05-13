@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const customer = process.argv[2];
+const customer = process.env.CUSTOMER; //process.argv[2];
 if (customer === undefined) {
   throw new Error('No customer defined!');
 }
