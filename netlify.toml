@@ -2,6 +2,3 @@
   base="smarter-menu-web/"
   command = "npm run build"
   publish = "public/"
-
-[[headers]]
-  X-Netlify-Host = "smarter-menu-netlify"

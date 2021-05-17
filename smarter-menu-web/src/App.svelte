@@ -39,10 +39,6 @@
     deleteOldLocalStorageVersions();
   }, 500);
 
-  fetch('https://992x1q7ut1.execute-api.eu-central-1.amazonaws.com/hello')
-    .then((res) => res.json())
-    .then((res) => console.log(res.msg));
-
   onDestroy(() => {
     removeAllBookmarkSubscriptions();
   });
