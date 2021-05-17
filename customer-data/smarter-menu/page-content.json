@@ -6,7 +6,8 @@
     "homeBreadCrumb": "Home"
   },
   "menuItems": {
-    "allergens": "Allergene"
+    "allergens": "Allergene",
+    "showItemNumber": true
   },
   "bookmarks": {
     "noItems": "Keine Einträge in der Merkliste.",

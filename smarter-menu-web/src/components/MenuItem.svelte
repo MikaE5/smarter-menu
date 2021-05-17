@@ -26,6 +26,8 @@
   import Classifications from './menu-item/Classifications.svelte';
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
+  import { buildItemLabel } from '../util/menu-item.util';
+  import ItemLabel from './menu-item/ItemLabel.svelte';
   export let menuItem: MenuItem;
   export let allergensLabel: string;
 
@@ -73,9 +75,13 @@
           <Row cols={1}>
             <Col>
               <div
-                class="d-flex justify-content-between align-items-center mr-2"
+                class="d-flex justify-content-between align-items-center mb-3"
               >
-                <CardTitle>{menuItem.name}</CardTitle>
+                <ItemLabel
+                  name={menuItem.name}
+                  itemNumber={menuItem.item_number}
+                />
+
                 <Counter
                   increase={() => addToBookmarks(menuItem.id)}
                   decrease={() => reduceBookmark(menuItem.id)}
@@ -84,11 +90,19 @@
               </div>
             </Col>
             {#if menuItem.description}
-              <Col><p class="description">{menuItem.description}</p></Col>
+              <Col>
+                <div class="mb-1">
+                  <p class="description mb-0">{menuItem.description}</p>
+                </div>
+              </Col>
             {/if}
             {#if menuItem.classifications}
               <Col>
-                <Classifications classificationIds={menuItem.classifications} />
+                <div class="mb-1">
+                  <Classifications
+                    classificationIds={menuItem.classifications}
+                  />
+                </div>
               </Col>
             {/if}
             <Col
@@ -126,10 +140,6 @@
 </div>
 
 <style>
-  .test {
-    background-color: blue;
-  }
-
   .modal-image {
     max-width: 100%;
   }
@@ -145,6 +155,6 @@
   }
 
   .description {
-    font-size: smaller;
+    font-size: medium;
   }
 </style>

@@ -39,6 +39,7 @@
   {
     "id": "menu-item/red-wine",
     "name": "Rotwein",
+    "description": "Halbtrockener, süßer Rotwein aus der Region",
     "item_number": 4,
     "categories": ["category/cold-drinks"],
     "price": {
@@ -49,6 +50,7 @@
   {
     "id": "menu-item/wheat-beer",
     "name": "Weizen",
+    "description": "Helles Weizenbier nach bayrischer Brauart",
     "item_number": 5,
     "categories": ["category/cold-drinks"],
     "price": {
@@ -73,6 +75,7 @@
   {
     "id": "menu-item/strawberry-cake",
     "name": "Erdbeerkuchen",
+    "description": "mit regionalen Erdbeeren und Sahne",
     "item_number": 11,
     "categories": ["category/cake"],
     "price": {

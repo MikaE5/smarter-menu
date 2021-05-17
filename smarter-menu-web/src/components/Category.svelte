@@ -22,7 +22,6 @@
   const navigateToParentCategory = (e: MouseEvent) => {
     if (!hasSubCategories) {
       navigate(route);
-    } else {
     }
   };
 </script>

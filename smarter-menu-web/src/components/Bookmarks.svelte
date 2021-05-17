@@ -13,6 +13,7 @@
     BookmarkInfo,
     BookmarkItem,
   } from '../bookmarks/model/bookmark-info.interface';
+  import ItemLabel from './menu-item/ItemLabel.svelte';
   export let emptyItemsMessage: string;
   let totalPrice: string;
   let bookmarks: BookmarkItem[] = [];
@@ -30,7 +31,13 @@
     <tbody>
       {#each bookmarks as bookmark, i}
         <tr class={i === bookmarks.length - 1 ? '' : 'border-bottom'}>
-          <td><span>{bookmark.item.name}</span></td>
+          <td
+            ><ItemLabel
+              name={bookmark.item.name}
+              itemNumber={bookmark.item.item_number}
+              size={6}
+            /></td
+          >
 
           <td>
             <Counter
