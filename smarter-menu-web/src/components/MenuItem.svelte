@@ -26,7 +26,6 @@
   import Classifications from './menu-item/Classifications.svelte';
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
-  import { buildItemLabel } from '../util/menu-item.util';
   import ItemLabel from './menu-item/ItemLabel.svelte';
   export let menuItem: MenuItem;
   export let allergensLabel: string;
