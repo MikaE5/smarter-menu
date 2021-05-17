@@ -41,9 +41,10 @@
 </script>
 
 <Navbar color="info" light>
-  <NavbarBrand class="mr-auto" on:click={() => navigateTo('/')}
-    >{title}</NavbarBrand
-  >
+  <div class="mr-auto">
+    <NavbarBrand on:click={() => navigateTo('/')}>{title}</NavbarBrand>
+  </div>
+
   <CounterIcon
     icon="bookmark"
     click={() => navigateTo('/bookmarks')}
@@ -53,7 +54,7 @@
   <Collapse {isOpen} navbar>
     <Nav navbar justified>
       {#each navItems as navItem}
-        <NavLink color="primary" on:click={() => navigateTo(navItem.route)}
+        <NavLink on:click={() => navigateTo(navItem.route)}
           >{navItem.title}</NavLink
         >
       {/each}

@@ -21,8 +21,10 @@
 
 <Row cols={1}>
   {#each menuItems as menuItem}
-    <Col class="mb-1 mt-1">
-      <MenuItem {allergensLabel} {menuItem} />
+    <Col>
+      <div class="mb-1 mt-1">
+        <MenuItem {allergensLabel} {menuItem} />
+      </div>
     </Col>
   {/each}
 </Row>

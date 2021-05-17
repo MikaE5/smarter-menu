@@ -10,8 +10,10 @@
 
 <Row cols={1}>
   {#each categories as category}
-    <Col class="mb-1 mt-1">
-      <Category {category} />
+    <Col>
+      <div class="mb-1 mt-1">
+        <Category {category} />
+      </div>
     </Col>
   {/each}
 </Row>

@@ -21,9 +21,9 @@
   import type { MenuItem } from '../data/model/menu-item.interface';
   import { getMenuItemImagePath } from '../util/image.util';
   import { getPriceString } from '../util/price.util';
-  import Allergens from './Allergens.svelte';
-  import Classifications from './Classifications.svelte';
+  import Allergens from './menu-item/Allergens.svelte';
   import ConditionalImg from './shared/ConditionalImg.svelte';
+  import Classifications from './menu-item/Classifications.svelte';
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
   export let menuItem: MenuItem;
@@ -72,7 +72,9 @@
         <div class="flex-grow-1">
           <Row cols={1}>
             <Col>
-              <div class="d-flex justify-content-between mr-2">
+              <div
+                class="d-flex justify-content-between align-items-center mr-2"
+              >
                 <CardTitle>{menuItem.name}</CardTitle>
                 <Counter
                   increase={() => addToBookmarks(menuItem.id)}
@@ -81,6 +83,9 @@
                 />
               </div>
             </Col>
+            {#if menuItem.description}
+              <Col><p class="description">{menuItem.description}</p></Col>
+            {/if}
             {#if menuItem.classifications}
               <Col>
                 <Classifications classificationIds={menuItem.classifications} />
@@ -88,7 +93,6 @@
             {/if}
             <Col
               ><div class="d-flex justify-content-between">
-                <CardText>{priceString}</CardText>
                 {#if menuItem.allergens}
                   <IconButton
                     label={allergensLabel}
@@ -96,6 +100,9 @@
                     click={toggleAllergensModal}
                   />
                 {/if}
+                <div class="ml-auto">
+                  <CardText>{priceString}</CardText>
+                </div>
               </div></Col
             >
           </Row>
@@ -119,6 +126,10 @@
 </div>
 
 <style>
+  .test {
+    background-color: blue;
+  }
+
   .modal-image {
     max-width: 100%;
   }
@@ -131,5 +142,9 @@
     min-height: 20vw;
     max-width: 20vw;
     max-height: 20vw;
+  }
+
+  .description {
+    font-size: smaller;
   }
 </style>

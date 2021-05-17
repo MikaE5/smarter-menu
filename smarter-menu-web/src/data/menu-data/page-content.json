@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "smart-menu"
+    "title": "smarter-menu"
   },
   "categories": {
     "homeBreadCrumb": "Home"
@@ -13,7 +13,7 @@
     "title": "Merkliste"
   },
   "footer": {
-    "slogan": "made possible with smart-menu",
+    "slogan": "made possible with smarter-menu",
     "dataPrivacy": "Datenschutz"
   }
 }
