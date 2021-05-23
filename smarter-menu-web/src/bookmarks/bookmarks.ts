@@ -1,4 +1,4 @@
-import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { getMenuItemsByIds } from '../data/data.util';
 import type { MenuItem } from '../data/model/menu-item.interface';
@@ -6,7 +6,7 @@ import type { BookmarkMap } from './model/bookmark-map.interface';
 import type { BookmarkInfo } from './model/bookmark-info.interface';
 import { getPriceInfo } from './util/bookmarks.util';
 
-const LOCAL_STORAGE_PREFIX = 'DIGITAL_MENU';
+const LOCAL_STORAGE_PREFIX = 'SMARTER_MENU';
 const BOOKMARKS_PREFIX = LOCAL_STORAGE_PREFIX + '_bookmarks_v';
 const VERSION = 1;
 const BOOKMARKS = BOOKMARKS_PREFIX + VERSION;
