@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Badge } from 'sveltestrap';
-  import { getAllergensByIds } from '../../data/data.util';
-  import type { Allergen } from '../../data/model/allergen.interface';
+  import { getAllergensByIds } from '../../../data/data.util';
+  import type { Allergen } from '../../../data/model/allergen.interface';
 
   export let allergenIds: string[];
 

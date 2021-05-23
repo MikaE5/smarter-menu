@@ -1,0 +1,42 @@
+[
+  {
+    "customer_id": "smarter-menu",
+    "page_content": {
+      "bookmarks": {
+        "title": "Merkliste",
+        "no_items": "Keine Einträge in der Merkliste."
+      },
+      "header": { "title": "smarter-menu" },
+      "menu_items": { "allergens": "Allergene" },
+      "categories": { "home_bread_crumb": "Home" },
+      "footer": {
+        "slogan": "made possible with smarter-menu",
+        "data_privacy": "Datenschutz"
+      }
+    },
+    "id": "page-config/smarter-menu",
+    "style": {
+      "theme_url": "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    }
+  },
+  {
+    "customer_id": "test",
+    "page_content": {
+      "bookmarks": {
+        "title": "Merkliste",
+        "no_items": "Keine Einträge in der Merkliste."
+      },
+      "header": { "title": "test-title-menu" },
+      "menu_items": { "allergens": "Allergene" },
+      "categories": { "home_bread_crumb": "Home" },
+      "footer": {
+        "slogan": "made possible with smarter-menu",
+        "data_privacy": "Datenschutz"
+      }
+    },
+    "id": "page-config/smarter-menu",
+    "style": {
+      "theme_url": "https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cerulean/bootstrap.min.css"
+    }
+  }
+]

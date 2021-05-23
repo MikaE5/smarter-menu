@@ -4,16 +4,17 @@
     reduceBookmark,
     addBookmarksListener,
     removeBookmarksListener,
-  } from '../bookmarks/bookmarks';
+  } from '../../bookmarks/bookmarks';
   import { Table } from 'sveltestrap';
-  import { getPriceString } from '../util/price.util';
+  import { getPriceString } from '../../util/price.util';
   import { onDestroy } from 'svelte';
   import Counter from './shared/Counter.svelte';
   import type {
     BookmarkInfo,
     BookmarkItem,
-  } from '../bookmarks/model/bookmark-info.interface';
+  } from '../../bookmarks/model/bookmark-info.interface';
   import ItemLabel from './menu-item/ItemLabel.svelte';
+
   export let emptyItemsMessage: string;
   let totalPrice: string;
   let bookmarks: BookmarkItem[] = [];

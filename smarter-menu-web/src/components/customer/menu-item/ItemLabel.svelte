@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { buildItemLabel } from '../../util/menu-item.util';
+  import { buildItemLabel } from '../../../util/menu-item.util';
   export let name: string;
   export let itemNumber: number = undefined;
 

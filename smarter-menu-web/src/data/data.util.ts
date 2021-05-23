@@ -3,14 +3,46 @@ import type { Classification } from './model/classification.interface';
 import type { MenuItem } from './model/menu-item.interface';
 import type { Allergen } from './model/allergen.interface';
 import type { CategoryType } from './model/category-type.enum';
-import pageConfig from '../page-config.json';
-import type { PageConfig } from './model/page-config.interface';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 
-export const getPageConfig = (): PageConfig => {
-  return pageConfig;
+let dataCustomer: string;
+const dataCustomer$: BehaviorSubject<string> = new BehaviorSubject(undefined);
+let categories: Promise<Category[]> = undefined;
+let menuItems: Promise<MenuItem[]> = undefined;
+let allergens: Promise<Allergen[]> = undefined;
+let classifications: Promise<Classification[]> = undefined;
+
+export const setDataCustomer = (customer: string) => {
+  // reset data to allow refetch for different customer
+  categories = undefined;
+  menuItems = undefined;
+  allergens = undefined;
+  classifications = undefined;
+
+  dataCustomer = customer;
+  dataCustomer$.next(dataCustomer);
 };
 
-const baseRequest = (endpoint: string, fallback?: any): Promise<any> => {
+export const removeDataCustomer = () => {
+  // reset data to allow refetch for different customer
+  categories = undefined;
+  menuItems = undefined;
+  allergens = undefined;
+  classifications = undefined;
+
+  dataCustomer = undefined;
+  dataCustomer$.next(undefined);
+};
+
+const baseRequest = async (endpoint: string, fallback?: any): Promise<any> => {
+  const customer: string = await lastValueFrom(
+    dataCustomer$.pipe(
+      filter((c) => c !== undefined),
+      take(1)
+    )
+  );
+
   return fetch(
     `https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/${endpoint}`,
     {
@@ -19,7 +51,7 @@ const baseRequest = (endpoint: string, fallback?: any): Promise<any> => {
         'x-netlify-host': 'smarter-menu-netlify',
       },
       body: JSON.stringify({
-        customer_id: getPageConfig().customer_id,
+        customer_id: customer,
       }),
     }
   )
@@ -27,7 +59,6 @@ const baseRequest = (endpoint: string, fallback?: any): Promise<any> => {
     .catch(fallback);
 };
 
-let categories: Promise<Category[]> = undefined;
 const getCategories = async (): Promise<Category[]> => {
   if (categories === undefined) {
     categories = (await baseRequest('categories', [])).data;
@@ -36,7 +67,6 @@ const getCategories = async (): Promise<Category[]> => {
   return categories;
 };
 
-let menuItems: Promise<MenuItem[]> = undefined;
 const getMenuItems = async (): Promise<MenuItem[]> => {
   if (menuItems === undefined) {
     menuItems = (await baseRequest('items', [])).data;
@@ -45,8 +75,6 @@ const getMenuItems = async (): Promise<MenuItem[]> => {
   return menuItems;
 };
 
-let allergens: Promise<Allergen[]> = undefined;
-let classifications: Promise<Classification[]> = undefined;
 const getMetaData = async () => {
   const metaData = (await baseRequest('items-meta', [])).data;
   allergens = metaData.filter((meta) => meta.id.startsWith('meta/allergen'));
@@ -71,8 +99,9 @@ const getClassifications = async (): Promise<Classification[]> => {
 
 export const getCategoriesByType = async (
   type: CategoryType
-): Promise<Category[]> =>
-  (await getCategories()).filter((cat) => cat.category_type === type);
+): Promise<Category[]> => {
+  return (await getCategories()).filter((cat) => cat.category_type === type);
+};
 
 export const getCategoriesByIds = async (
   ids: string[]

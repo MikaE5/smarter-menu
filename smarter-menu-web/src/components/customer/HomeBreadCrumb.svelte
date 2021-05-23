@@ -4,11 +4,12 @@
 
   export let activeItem$: Promise<string>;
   export let homeBreadCrumb: string;
+  export let homePath: string;
 </script>
 
 <Breadcrumb>
   <BreadcrumbItem>
-    <Link to="/">{homeBreadCrumb}</Link>
+    <Link to={homePath}>{homeBreadCrumb}</Link>
   </BreadcrumbItem>
   <BreadcrumbItem active
     >{#await activeItem$ then item}

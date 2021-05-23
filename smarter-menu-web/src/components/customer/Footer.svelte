@@ -17,7 +17,7 @@
       >
     </NavItem>
     <NavItem>
-      <NavLink><Link to="/privacy">{dataPrivacy}</Link></NavLink>
+      <NavLink><Link to="privacy">{dataPrivacy}</Link></NavLink>
     </NavItem>
   </Nav>
 </div>

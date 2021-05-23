@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { getCategoriesByType } from '../data/data.util';
+  import { getCategoriesByType } from '../../data/data.util';
   import Category from './Category.svelte';
-  import type { Category as ICategory } from '../data/model/category.interface';
+  import type { Category as ICategory } from '../../data/model/category.interface';
   import { Row, Col } from 'sveltestrap';
-  import { CategoryType } from '../data/model/category-type.enum';
+  import { CategoryType } from '../../data/model/category-type.enum';
 
   const categories$: Promise<ICategory[]> = getCategoriesByType(
     CategoryType.C1

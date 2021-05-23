@@ -17,10 +17,10 @@
     reduceBookmark,
     addBookmarkCountListener,
     removeBookmarkCountListener,
-  } from '../bookmarks/bookmarks';
-  import type { MenuItem } from '../data/model/menu-item.interface';
-  import { getMenuItemImagePath } from '../util/image.util';
-  import { getPriceString } from '../util/price.util';
+  } from '../../bookmarks/bookmarks';
+  import type { MenuItem } from '../../data/model/menu-item.interface';
+  import { getMenuItemImagePath } from '../../util/image.util';
+  import { getPriceString } from '../../util/price.util';
   import Allergens from './menu-item/Allergens.svelte';
   import Classifications from './menu-item/Classifications.svelte';
   import Counter from './shared/Counter.svelte';

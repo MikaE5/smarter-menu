@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte';
 
-  import { useNavigate } from 'svelte-navigator';
+  import { Link, useNavigate } from 'svelte-navigator';
   import {
     Collapse,
     Navbar,
@@ -13,12 +13,13 @@
   import {
     addBookmarkOverallPriceListener,
     removeBookmarkOverallPriceListener,
-  } from '../bookmarks/bookmarks';
-  import { getPriceString } from '../util/price.util';
+  } from '../../bookmarks/bookmarks';
+  import { getPriceString } from '../../util/price.util';
   import CounterIcon from './shared/CounterIcon.svelte';
 
   export let title: string;
   export let navItems: Array<{ title: string; route: string }>;
+  export let homePath: string;
 
   let overallPrice: string = '';
   const priceListenerId = addBookmarkOverallPriceListener(
@@ -34,6 +35,9 @@
     if (isOpen) isOpen = false;
     navigate(route);
   };
+  const closeIfOpen = () => {
+    if (isOpen) toggle();
+  };
 
   onDestroy(() => {
     removeBookmarkOverallPriceListener(priceListenerId);
@@ -41,13 +45,14 @@
 </script>
 
 <Navbar color="info" light>
-  <div class="mr-auto">
-    <NavbarBrand on:click={() => navigateTo('/')}>{title}</NavbarBrand>
+  <div class="mr-auto" on:click={closeIfOpen}>
+    <Link to={homePath}>
+      <NavbarBrand>{title}</NavbarBrand>
+    </Link>
   </div>
-
   <CounterIcon
     icon="bookmark"
-    click={() => navigateTo('/bookmarks')}
+    click={() => navigateTo('bookmarks')}
     counter={overallPrice}
   />
   <NavbarToggler on:click={toggle} class="ml-2" />

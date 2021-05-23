@@ -14,25 +14,35 @@ const BOOKMARK_OVERALL_COUNT_LISTENER = '$bookmark_overall_count$!';
 const BOOKMARK_OVERALL_PRICE_LISTENER = '$bookmark_overall_price$!';
 const BOOKMARKS_LISTENER = '$bookmark$!';
 
+let bookmarkCustomer = '';
+
 export const deleteOldLocalStorageVersions = () => {
   let i = 1;
   while (i < VERSION) {
-    const item = BOOKMARKS_PREFIX + i;
+    const item = bookmarkCustomer + BOOKMARKS_PREFIX + i;
     localStorage.removeItem(item);
   }
 };
 
+export const setBookmarkCustomer = (customer: string) => {
+  //removeAllBookmarkSubscriptions();
+  bookmarkCustomer = customer;
+  bookmarks$.next(getBookmarks());
+};
+
+const getLocalStorageBookmark = (): string => bookmarkCustomer + BOOKMARKS;
+
 const getBookmarks = (): BookmarkMap => {
-  const bookmarks = localStorage.getItem(BOOKMARKS);
+  const bookmarks = localStorage.getItem(getLocalStorageBookmark());
   if (bookmarks === null) return {};
   return JSON.parse(bookmarks);
 };
 
-const bookmarks$: BehaviorSubject<BookmarkMap> = new BehaviorSubject(
+let bookmarks$: BehaviorSubject<BookmarkMap> = new BehaviorSubject(
   getBookmarks()
 );
 
-const bookmarkSubscriptionMap: { [id: string]: Subscription[] } = {};
+let bookmarkSubscriptionMap: { [id: string]: Subscription[] } = {};
 
 const addListener = (id: string, sub: Subscription): number => {
   if (bookmarkSubscriptionMap[id] === undefined) {
@@ -55,9 +65,12 @@ const removeListener = (id: string, listenerId: number) => {
 };
 
 export const removeAllBookmarkSubscriptions = () => {
-  Object.values(bookmarkSubscriptionMap).forEach((subArray) =>
-    subArray.forEach((sub) => sub.unsubscribe())
-  );
+  Object.values(bookmarkSubscriptionMap).forEach((subArray) => {
+    subArray.forEach((sub) => sub.unsubscribe());
+    subArray = [];
+  });
+  bookmarkSubscriptionMap = {};
+
   bookmarks$.unsubscribe();
 };
 
@@ -141,7 +154,7 @@ export const removeBookmarksListener = (listenerId: number) =>
 
 const setBookmarks = (newBookmarks: BookmarkMap) => {
   bookmarks$.next(newBookmarks);
-  localStorage.setItem(BOOKMARKS, JSON.stringify(newBookmarks));
+  localStorage.setItem(getLocalStorageBookmark(), JSON.stringify(newBookmarks));
 };
 
 export const addToBookmarks = (id: string) => {

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getMenuItemsForCategory } from '../data/data.util';
+  import { getMenuItemsForCategory } from '../../data/data.util';
   import { Row, Col } from 'sveltestrap';
-  import type { MenuItem as MenuItemType } from '../data/model/menu-item.interface';
+  import type { MenuItem as MenuItemType } from '../../data/model/menu-item.interface';
   import MenuItem from './MenuItem.svelte';
 
   export let categoryId: string;
