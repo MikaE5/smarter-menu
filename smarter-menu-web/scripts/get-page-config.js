@@ -16,7 +16,7 @@ const getPageConfig = async () => {
   );
 
   const res = await fetch(
-    'test.test.com', //'https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/page-config',
+    'https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/page-config',
     {
       method: 'post',
       headers: {
