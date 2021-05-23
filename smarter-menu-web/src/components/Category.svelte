@@ -6,19 +6,20 @@
     CardTitle,
     ListGroup,
     ListGroupItem,
-    CardBody,
   } from 'sveltestrap';
   import { getRouteToCategory } from './util/category.util';
   import { useNavigate } from 'svelte-navigator';
   import type { Category } from '../data/model/category.interface';
-  import { getCategories } from '../data/data.util';
+  import { getCategoriesByIds } from '../data/data.util';
   export let category: Category;
-  const subCategories: Category[] = category.sub_categories
-    ? getCategories(category.sub_categories)
-    : [];
+  const subCategories$: Promise<Category[]> = category.sub_categories
+    ? getCategoriesByIds(category.sub_categories)
+    : Promise.resolve([]);
   const route = getRouteToCategory(category.id);
-  const hasSubCategories = subCategories.length > 0;
   const navigate = useNavigate();
+  const hasSubCategories = category.sub_categories
+    ? category.sub_categories.length > 0
+    : false;
   const navigateToParentCategory = (e: MouseEvent) => {
     if (!hasSubCategories) {
       navigate(route);
@@ -39,17 +40,19 @@
         {/if}
       </div>
       <ListGroup>
-        {#each subCategories as subCategory}
-          <ListGroupItem
-            ><div
-              class="d-flex justify-content-between"
-              on:click={() => navigate(getRouteToCategory(subCategory.id))}
+        {#await subCategories$ then subCategories}
+          {#each subCategories as subCategory}
+            <ListGroupItem
+              ><div
+                class="d-flex justify-content-between"
+                on:click={() => navigate(getRouteToCategory(subCategory.id))}
+              >
+                <CardTitle>{subCategory.name}</CardTitle>
+                <Icon name="arrow-right" />
+              </div></ListGroupItem
             >
-              <CardTitle>{subCategory.name}</CardTitle>
-              <Icon name="arrow-right" />
-            </div></ListGroupItem
-          >
-        {/each}
+          {/each}
+        {/await}
       </ListGroup>
     </CardHeader>
   </Card>

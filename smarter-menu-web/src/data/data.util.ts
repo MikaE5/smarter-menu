@@ -1,33 +1,91 @@
 import type { Category } from './model/category.interface';
 import type { Classification } from './model/classification.interface';
 import type { MenuItem } from './model/menu-item.interface';
-import categories from './menu-data/categories.json';
-import menuItems from './menu-data/menu-items.json';
-import classifications from './menu-data/classifications.json';
-import allergens from './menu-data/allergens.json';
 import type { Allergen } from './model/allergen.interface';
 import type { CategoryType } from './model/category-type.enum';
+import pageConfig from '../page-config.json';
+import type { PageConfig } from './model/page-config.interface';
 
-const CATEGORIES: Category[] = categories as Category[];
-const MENU_ITEMS: MenuItem[] = menuItems;
-const CLASSIFICATIONS: Classification[] = classifications;
-const ALLERGENS: Allergen[] = allergens;
-
-export const getCategoriesByType = (type: CategoryType): Category[] =>
-  CATEGORIES.filter((cat) => cat.category_type === type);
-
-export const getCategories = (ids: string[]): Category[] => {
-  const idSet = new Set(ids);
-  return CATEGORIES.filter(({ id }) => idSet.has(id));
+export const getPageConfig = (): PageConfig => {
+  return pageConfig;
 };
 
-export const getMenuItemsForCategory = (
+const baseRequest = (endpoint: string): Promise<any> => {
+  return fetch(
+    `https://992x1q7ut1.execute-api.eu-central-1.amazonaws.com/${endpoint}`,
+    {
+      method: 'post',
+      headers: {
+        'x-netlify-host': 'smarter-menu-netlify',
+      },
+      body: JSON.stringify({
+        customer_id: getPageConfig().customer_id,
+      }),
+    }
+  ).then((res) => res.json());
+};
+
+let categories: Promise<Category[]> = undefined;
+const getCategories = async (): Promise<Category[]> => {
+  if (categories === undefined) {
+    categories = (await baseRequest('categories')).data;
+  }
+
+  return categories;
+};
+
+let menuItems: Promise<MenuItem[]> = undefined;
+const getMenuItems = async (): Promise<MenuItem[]> => {
+  if (menuItems === undefined) {
+    menuItems = (await baseRequest('items')).data;
+  }
+
+  return menuItems;
+};
+
+let allergens: Promise<Allergen[]> = undefined;
+let classifications: Promise<Classification[]> = undefined;
+const getMetaData = async () => {
+  const metaData = await baseRequest('items-meta');
+  allergens = metaData.filter((meta) => meta.id.startsWith('meta/allergen'));
+  classifications = metaData.filter((meta) =>
+    meta.id.startsWith('meta/classification')
+  );
+};
+
+const getAllergens = async (): Promise<Allergen[]> => {
+  if (allergens === undefined) {
+    await getMetaData();
+  }
+  return allergens;
+};
+
+const getClassifications = async (): Promise<Classification[]> => {
+  if (classifications === undefined) {
+    await getMetaData();
+  }
+  return classifications;
+};
+
+export const getCategoriesByType = async (
+  type: CategoryType
+): Promise<Category[]> =>
+  (await getCategories()).filter((cat) => cat.category_type === type);
+
+export const getCategoriesByIds = async (
+  ids: string[]
+): Promise<Category[]> => {
+  const idSet = new Set(ids);
+  return (await getCategories()).filter(({ id }) => idSet.has(id));
+};
+
+export const getMenuItemsForCategory = async (
   categoryId: string,
   getMenuItemsForSubCategories = false
-): MenuItem[] => {
+): Promise<MenuItem[]> => {
   let categoryIdSet: Set<string> = new Set([categoryId]);
   if (getMenuItemsForSubCategories) {
-    const foundCategories = getCategories([categoryId]);
+    const foundCategories = await getCategoriesByIds([categoryId]);
     if (
       foundCategories.length > 0 &&
       foundCategories[0].sub_categories !== undefined
@@ -39,34 +97,42 @@ export const getMenuItemsForCategory = (
     }
   }
 
-  return MENU_ITEMS.filter(
+  return (await getMenuItems()).filter(
     (item: MenuItem) =>
       item.categories.findIndex((id) => categoryIdSet.has(id)) !== -1
   );
 };
 
-export const getMenuItems = (ids: string[]): MenuItem[] => {
+export const getMenuItemsByIds = async (ids: string[]): Promise<MenuItem[]> => {
   const idSet = new Set(ids);
-  return MENU_ITEMS.filter(({ id }) => idSet.has(id));
+  return (await getMenuItems()).filter(({ id }) => idSet.has(id));
 };
 
-export const getCategoryNameForId = (categoryId: string): string => {
-  const category = CATEGORIES.find(({ id }) => id === categoryId);
+export const getCategoryNameForId = async (
+  categoryId: string
+): Promise<string> => {
+  const category = (await getCategories()).find(({ id }) => id === categoryId);
   return category !== undefined ? category.name : undefined;
 };
 
-export const getClassifications = (ids: string[]): Classification[] => {
+export const getClassificationsByIds = async (
+  ids: string[]
+): Promise<Classification[]> => {
+  const classifications = await getClassifications();
+
   return ids
     .map((id) =>
-      CLASSIFICATIONS.find(
+      classifications.find(
         (classification: Classification) => classification.id === id
       )
     )
     .filter((classification: Classification) => classification !== undefined);
 };
 
-export const getAllergens = (ids: string[]) => {
+export const getAllergensByIds = async (ids: string[]): Promise<Allergen[]> => {
+  const allergens = await getAllergens();
+
   return ids
-    .map((id) => ALLERGENS.find((allergen: Allergen) => allergen.id === id))
+    .map((id) => allergens.find((allergen: Allergen) => allergen.id === id))
     .filter((allergen: Allergen) => allergen !== undefined);
 };

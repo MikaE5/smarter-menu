@@ -5,15 +5,19 @@
   import { Row, Col } from 'sveltestrap';
   import { CategoryType } from '../data/model/category-type.enum';
 
-  const categories: ICategory[] = getCategoriesByType(CategoryType.C1);
+  const categories$: Promise<ICategory[]> = getCategoriesByType(
+    CategoryType.C1
+  );
 </script>
 
-<Row cols={1}>
-  {#each categories as category}
-    <Col>
-      <div class="mb-1 mt-1">
-        <Category {category} />
-      </div>
-    </Col>
-  {/each}
-</Row>
+{#await categories$ then categories}
+  <Row cols={1}>
+    {#each categories as category}
+      <Col>
+        <div class="mb-1 mt-1">
+          <Category {category} />
+        </div>
+      </Col>
+    {/each}
+  </Row>
+{/await}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "node scripts/inject-customer-data.js",
+    "prebuild": "node scripts/get-page-config.js",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear --single",
@@ -17,6 +17,7 @@
     "@tsconfig/svelte": "^1.0.0",
     "dotenv": "^9.0.2",
     "fs-extra": "^10.0.0",
+    "node-fetch": "^2.6.1",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",

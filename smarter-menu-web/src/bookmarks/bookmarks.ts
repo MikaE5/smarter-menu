@@ -1,12 +1,9 @@
 import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { getMenuItems } from '../data/data.util';
+import { getMenuItemsByIds } from '../data/data.util';
 import type { MenuItem } from '../data/model/menu-item.interface';
 import type { BookmarkMap } from './model/bookmark-map.interface';
-import type {
-  BookmarkInfo,
-  BookmarkPriceInfo,
-} from './model/bookmark-info.interface';
+import type { BookmarkInfo } from './model/bookmark-info.interface';
 import { getPriceInfo } from './util/bookmarks.util';
 
 const LOCAL_STORAGE_PREFIX = 'DIGITAL_MENU';
@@ -111,8 +108,8 @@ export const addBookmarkOverallPriceListener = (
 ): number => {
   return addListener(
     BOOKMARK_OVERALL_PRICE_LISTENER,
-    bookmarks$.subscribe((map: BookmarkMap) => {
-      const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
+    bookmarks$.subscribe(async (map: BookmarkMap) => {
+      const menuItems: MenuItem[] = await getMenuItemsByIds(Object.keys(map));
       const { price, unit } = getPriceInfo(map, menuItems);
 
       listener(price, unit);
@@ -125,8 +122,8 @@ export const addBookmarksListener = (
 ): number => {
   return addListener(
     BOOKMARKS_LISTENER,
-    bookmarks$.subscribe((map: BookmarkMap) => {
-      const menuItems: MenuItem[] = getMenuItems(Object.keys(map));
+    bookmarks$.subscribe(async (map: BookmarkMap) => {
+      const menuItems: MenuItem[] = await getMenuItemsByIds(Object.keys(map));
       const items = menuItems.map((item) => {
         return {
           item,

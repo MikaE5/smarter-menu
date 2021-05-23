@@ -14,26 +14,35 @@
   import HomeBreadCrumb from './components/HomeBreadCrumb.svelte';
   import MenuItems from './components/MenuItems.svelte';
   import { getRouteToCategory } from './components/util/category.util';
-  import { getCategoriesByType, getCategoryNameForId } from './data/data.util';
-  import pageContent from './data/menu-data/page-content.json';
-  import config from './data/menu-data/config.json';
+  import {
+    getCategoriesByType,
+    getCategoryNameForId,
+    getPageConfig,
+  } from './data/data.util';
   import { CategoryType } from './data/model/category-type.enum';
 
   // get first level categories
-  const navItems: Array<{ title: string; route: string }> = getCategoriesByType(
-    CategoryType.C1
-  ).map((category) => {
-    return {
-      title: category.name,
-      route: getRouteToCategory(category.id),
-    };
-  });
-  const title = pageContent.header.title;
-  const emptyItemsMessage = pageContent.bookmarks.noItems;
-  const bookmarksTitle = pageContent.bookmarks.title;
-  const { slogan, dataPrivacy } = pageContent['footer'];
-  const homeBreadCrumb = pageContent['categories'].homeBreadCrumb;
-  const allergensLabel = pageContent.menuItems.allergens;
+  let navItems: Array<{ title: string; route: string }> = [];
+
+  getCategoriesByType(CategoryType.C1)
+    .then((categories) =>
+      categories.map((category) => {
+        return {
+          title: category.name,
+          route: getRouteToCategory(category.id),
+        };
+      })
+    )
+    .then((items) => (navItems = items));
+  const pageConfig = getPageConfig();
+
+  const title = pageConfig.page_content.header.title;
+  const emptyItemsMessage = pageConfig.page_content.bookmarks.no_items;
+  const bookmarksTitle = pageConfig.page_content.bookmarks.title;
+  const slogan = pageConfig.page_content.footer.slogan;
+  const dataPrivacy = pageConfig.page_content.footer.data_privacy;
+  const homeBreadCrumb = pageConfig.page_content.categories.home_bread_crumb;
+  const allergensLabel = pageConfig.page_content.menu_items.allergens;
 
   setTimeout(() => {
     deleteOldLocalStorageVersions();
@@ -45,12 +54,12 @@
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href={config.theme_url} />
+  <link rel="stylesheet" href={pageConfig.style.theme_url} />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
   />
-  <title>{pageContent.header.title}</title>
+  <title>{title}</title>
 </svelte:head>
 
 <Router>
@@ -65,7 +74,9 @@
       <Route path="category/:category" primary={false} let:params>
         <HomeBreadCrumb
           {homeBreadCrumb}
-          activeItem={getCategoryNameForId(decodeURIComponent(params.category))}
+          activeItem$={getCategoryNameForId(
+            decodeURIComponent(params.category)
+          )}
         />
         <MenuItems
           {allergensLabel}
@@ -73,11 +84,17 @@
         />
       </Route>
       <Route path="/bookmarks" primary={false}>
-        <HomeBreadCrumb {homeBreadCrumb} activeItem={bookmarksTitle} />
+        <HomeBreadCrumb
+          {homeBreadCrumb}
+          activeItem$={Promise.resolve(bookmarksTitle)}
+        />
         <Bookmarks {emptyItemsMessage} />
       </Route>
       <Route path="/privacy">
-        <HomeBreadCrumb {homeBreadCrumb} activeItem={dataPrivacy} />
+        <HomeBreadCrumb
+          {homeBreadCrumb}
+          activeItem$={Promise.resolve(dataPrivacy)}
+        />
         <DataPrivacy />
       </Route>
     </main>
