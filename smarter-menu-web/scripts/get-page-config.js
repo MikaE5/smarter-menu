@@ -15,7 +15,7 @@ const getPageConfig = async () => {
   );
 
   const res = await fetch(
-    ' https://992x1q7ut1.execute-api.eu-central-1.amazonaws.com/page-config',
+    'https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/page-config',
     {
       method: 'post',
       headers: {
@@ -25,7 +25,11 @@ const getPageConfig = async () => {
         customer_id: customer,
       }),
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      throw new Error('Could not load page config');
+    });
 
   const pageConfig = res.data;
   if (pageConfig === undefined) {
