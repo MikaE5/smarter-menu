@@ -7,7 +7,8 @@ dotenv.config();
 const getPageConfig = async () => {
   const customer = process.env.CUSTOMER;
   if (customer === undefined) {
-    throw new Error('No customer defined!');
+    console.log('### No customer defined');
+    process.exit(1);
   }
 
   console.log(
@@ -28,12 +29,14 @@ const getPageConfig = async () => {
   )
     .then((res) => res.json())
     .catch((err) => {
-      throw new Error('Could not load page config');
+      console.log('### Could not load page config');
+      process.exit(1);
     });
 
   const pageConfig = res.data;
   if (pageConfig === undefined) {
-    throw new Error('No page config available.');
+    console.log('### No page config available.');
+    process.exit(1);
   }
 
   const CWD = process.cwd(); // will be smarter-menu-web since this script will be executed from prebuild in package.json
@@ -47,5 +50,6 @@ const getPageConfig = async () => {
 try {
   getPageConfig();
 } catch (error) {
-  throw new Error('Error while fetching page config.');
+  console.log('### Error while fetching page config.');
+  process.exit(1);
 }
