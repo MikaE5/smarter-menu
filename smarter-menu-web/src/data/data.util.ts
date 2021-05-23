@@ -12,7 +12,7 @@ export const getPageConfig = (): PageConfig => {
 
 const baseRequest = (endpoint: string, fallback?: any): Promise<any> => {
   return fetch(
-    `https://992x1q7ut1.execute-api.eu-central-1.amazonaws.com/${endpoint}`,
+    `https://je0vae9q4l.execute-api.eu-central-1.amazonaws.com${endpoint}`,
     {
       method: 'post',
       headers: {
