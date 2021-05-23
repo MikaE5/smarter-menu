@@ -10,7 +10,7 @@ export const getPageConfig = (): PageConfig => {
   return pageConfig;
 };
 
-const baseRequest = (endpoint: string): Promise<any> => {
+const baseRequest = (endpoint: string, fallback?: any): Promise<any> => {
   return fetch(
     `https://992x1q7ut1.execute-api.eu-central-1.amazonaws.com/${endpoint}`,
     {
@@ -22,13 +22,15 @@ const baseRequest = (endpoint: string): Promise<any> => {
         customer_id: getPageConfig().customer_id,
       }),
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch(fallback);
 };
 
 let categories: Promise<Category[]> = undefined;
 const getCategories = async (): Promise<Category[]> => {
   if (categories === undefined) {
-    categories = (await baseRequest('categories')).data;
+    categories = (await baseRequest('categories', [])).data;
   }
 
   return categories;
@@ -37,7 +39,7 @@ const getCategories = async (): Promise<Category[]> => {
 let menuItems: Promise<MenuItem[]> = undefined;
 const getMenuItems = async (): Promise<MenuItem[]> => {
   if (menuItems === undefined) {
-    menuItems = (await baseRequest('items')).data;
+    menuItems = (await baseRequest('items', [])).data;
   }
 
   return menuItems;
@@ -46,7 +48,7 @@ const getMenuItems = async (): Promise<MenuItem[]> => {
 let allergens: Promise<Allergen[]> = undefined;
 let classifications: Promise<Classification[]> = undefined;
 const getMetaData = async () => {
-  const metaData = await baseRequest('items-meta');
+  const metaData = (await baseRequest('items-meta', [])).data;
   allergens = metaData.filter((meta) => meta.id.startsWith('meta/allergen'));
   classifications = metaData.filter((meta) =>
     meta.id.startsWith('meta/classification')

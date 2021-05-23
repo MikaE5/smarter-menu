@@ -21,9 +21,7 @@
     ? category.sub_categories.length > 0
     : false;
   const navigateToParentCategory = (e: MouseEvent) => {
-    if (!hasSubCategories) {
-      navigate(route);
-    }
+    navigate(route);
   };
 </script>
 
@@ -35,9 +33,7 @@
         on:click={navigateToParentCategory}
       >
         <CardTitle>{category.name}</CardTitle>
-        {#if !hasSubCategories}
-          <Icon name="arrow-right" />
-        {/if}
+        <Icon name="arrow-right" />
       </div>
       <ListGroup>
         {#await subCategories$ then subCategories}
