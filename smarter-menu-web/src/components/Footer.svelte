@@ -3,12 +3,18 @@
   import { NavLink, Nav, NavItem } from 'sveltestrap';
   export let slogan: string;
   export let dataPrivacy: string;
+
+  const openExternal = (url: string) => {
+    window.open(url, '_blank').focus();
+  };
 </script>
 
 <div class="border-top">
   <Nav vertical>
     <NavItem>
-      <NavLink>{slogan}</NavLink>
+      <NavLink on:click={() => openExternal('https://www.smarter-menu.de')}
+        >{slogan}</NavLink
+      >
     </NavItem>
     <NavItem>
       <NavLink><Link to="/privacy">{dataPrivacy}</Link></NavLink>
