@@ -22,7 +22,6 @@
   import { getMenuItemImagePath } from '../util/image.util';
   import { getPriceString } from '../util/price.util';
   import Allergens from './menu-item/Allergens.svelte';
-  import ConditionalImg from './shared/ConditionalImg.svelte';
   import Classifications from './menu-item/Classifications.svelte';
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
@@ -49,9 +48,6 @@
     );
   }
 
-  let imageModalOpen = false;
-  const toggleImageModal = () => (imageModalOpen = !imageModalOpen);
-
   let allergensModalOpen = false;
   const toggleAllergensModal = () => (allergensModalOpen = !allergensModalOpen);
 
@@ -63,13 +59,7 @@
 <div>
   <Card color="light">
     <CardHeader>
-      <div class="d-flex img-parent">
-        <ConditionalImg
-          class="menu-item-image mr-2"
-          click={toggleImageModal}
-          src={imgSrc}
-        />
-
+      <div class="d-flex">
         <div class="flex-grow-1">
           <Row cols={1}>
             <Col>
@@ -124,12 +114,6 @@
     </CardHeader>
   </Card>
 
-  <Modal isOpen={imageModalOpen} toggle={toggleImageModal}>
-    <ModalHeader toggle={toggleImageModal}>{menuItem.name}</ModalHeader>
-    <ModalBody>
-      <img src={imgSrc} alt="" class="modal-image" />
-    </ModalBody>
-  </Modal>
   <Modal isOpen={allergensModalOpen} toggle={toggleAllergensModal}>
     <ModalHeader toggle={toggleAllergensModal}>{menuItem.name}</ModalHeader>
     <ModalBody>
@@ -139,20 +123,6 @@
 </div>
 
 <style>
-  .modal-image {
-    max-width: 100%;
-  }
-
-  .img-parent :global(.menu-item-image) {
-    object-fit: cover;
-    width: 20vw;
-    height: 20vw;
-    min-width: 20vw;
-    min-height: 20vw;
-    max-width: 20vw;
-    max-height: 20vw;
-  }
-
   .description {
     font-size: medium;
   }
