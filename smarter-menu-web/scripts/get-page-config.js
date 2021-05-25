@@ -5,10 +5,11 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const getPageConfig = async () => {
-  console.log(`\n\n### Start fetching page configs: ${customer} ###\n`);
+  console.log(`\n\n### Start fetching page configs: ###\n`);
 
   const res = await fetch(
     'https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/page-configs',
+
     {
       method: 'post',
       headers: {
