@@ -3,9 +3,11 @@
   import { NavLink, Nav, NavItem } from 'sveltestrap';
   export let slogan: string;
   export let dataPrivacy: string;
+  export let imprint: string;
 
   const openExternal = (url: string) => {
-    window.open(url, '_blank').focus();
+    // do nothing for now
+    //window.open(url, '_blank').focus();
   };
 </script>
 
@@ -18,6 +20,9 @@
     </NavItem>
     <NavItem>
       <NavLink><Link to="privacy">{dataPrivacy}</Link></NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink><Link to="imprint">{imprint}</Link></NavLink>
     </NavItem>
   </Nav>
 </div>

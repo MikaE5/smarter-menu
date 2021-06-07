@@ -1,111 +1,134 @@
 <div class="privacy-policy">
-  <h1>Privacy policy</h1>
+  <h1>Datenschutzerklärung</h1>
   <p>
-    The responsible party in terms of data protection laws, in particular the EU
-    General Data Protection Regulation (DSGVO), is <br />
-    Mika Eckhardt<br />
-    Lömmelsweg 5<br />
-    36275 Kirchheim
+    Diese Datenschutzerklärung soll die Nutzer dieser Website über die Art, den
+    Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten
+    durch den Websitebetreiber Mika Eckhardt informieren. Der Websitebetreiber
+    nimmt Ihren Datenschutz sehr ernst und behandelt Ihre personenbezogenen
+    Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Da durch
+    neue Technologien und die ständige Weiterentwicklung dieser Webseite
+    Änderungen an dieser Datenschutzerklärung vorgenommen werden können,
+    empfehlen wir Ihnen sich die Datenschutzerklärung in regelmäßigen Abständen
+    wieder durchzulesen. Definitionen der verwendeten Begriffe (z.B.
+    “personenbezogene Daten” oder “Verarbeitung”) finden Sie in Art. 4 DSGVO.
+  </p>
+  <p>
+    Sie erhalten als Nutzer unserer Internetseite in dieser Datenschutzerklärung
+    alle notwendigen Informationen darüber, wie, in welchem Umfang sowie zu
+    welchem Zweck wir oder Drittanbieter Daten von Ihnen erheben und diese
+    verwenden. Die Erhebung und Nutzung Ihrer Daten erfolgt streng nach den
+    Vorgaben des Bundesdatenschutzgesetzes (BDSG) und des Telemediengesetzes
+    (TMG).
   </p>
 
+  <h2>Verarbeitung von Daten</h2>
   <p>
-    As a user of our website, you will receive all necessary information in this
-    data protection declaration about how, to what extent and for what purpose
-    we or third-party providers collect data from you and use it. The collection
-    and use of your data is strictly in accordance with the provisions of the
-    Federal Data Protection Act (BDSG) and the Telemedia Act (TMG).
+    Wenn Sie auf unsere Website zugreifen, d.h., wenn Sie sich nicht
+    registrieren oder anderweitig Informationen übermitteln, werden automatisch
+    Informationen allgemeiner Natur erfasst. Diese Informationen
+    (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete
+    Betriebssystem, den Domainnamen Ihres Internet-Service-Providers, Ihre
+    IP-Adresse und ähnliches. <br />
+    Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO auf Basis unseres berechtigten
+    Interesses an der Verbesserung der Stabilität und Funktionalität unserer Website.
   </p>
 
-  <h2>Processing of data</h2>
+  <h3>Datenverarbeitung durch Cookies und Local Storage</h3>
   <p>
-    When you access our website, i.e. if you do not register or otherwise
-    transmit information, information of a general nature is automatically
-    collected. This information (server log files) includes, for example, the
-    type of web browser, the operating system used, the domain name of your
-    Internet service provider, your IP address and the like. <br />
-    The processing is carried out in accordance with Art. 6 (1) lit. f DSGVO on the
-    basis of our legitimate interest in improving the stability and functionality
-    of our website.
+    Wir setzen keine Cookies ein.<br />
+    Bei der Nutzung der Website werden Daten im Local Storage gespeichert. Dabei
+    werden Daten im Cache des Browsers gespeichert, die auch nach dem Schließen des
+    Browser-Fensters oder dem Beenden des Programms weiterhin bestehen.<br />
+    Auf die im Local Storage gespeicherten Daten können Dritte nicht zugreifen. Sie
+    werden nicht an Dritte weitergegeben und auch nicht zu Werbezwecken verwendet.<br
+    />
+    Die Daten im Local Storage können jederzeit über die Browser-Einstellungen gelöscht
+    werden.
   </p>
 
-  <h3>External hosting</h3>
+  <h3>Externes Hosting</h3>
   <p>
-    This website is hosted by an external service provider (<a
+    Diese Website wird bei einem externen Dienstleister gehostet (<a
       href="https://www.netlify.com/">netlify</a
-    >), hereinafter referred to as "hoster".<br />
+    >), nachfolgend "Hoster" genannt.<br />
     <br />
     Netlify, Inc <br />
     2325 3rd Street, Suite 296 <br />
     San Francisco, 94107 CA <br />
     <br />
-    Personal data collected on this website is stored on the hoster's servers. This
-    may include, but is not limited to, IP addresses, contact requests, meta and
-    communication data, contract data, contact information, names, website accesses
-    and other data generated through a website. <br />
-    In particular, the hoster stores access logs that include your IP address. These
-    are stored on the hoster's servers for less than 30 days.
+    Personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den
+    Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen,
+    Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Webseitenzugriffe
+    und sonstige Daten, die über eine Website generiert werden, handeln. <br />
+    Der Hoster speichert insbesondere Access Logs, die Ihre IP-Adresse beinhalten.
+    Diese werden für weniger als 30 Tage auf den Servern des Hosters gespeichert.
     <br />
-    You can find more information
-    <a href="https://www.netlify.com/gdpr-ccpa">here</a>.
+    Weitere Informationen finden Sie
+    <a href="https://www.netlify.com/gdpr-ccpa">hier</a>.
   </p>
 
-  <h3>Use of script libraries (Google Web Fonts)</h3>
+  <h3>Verwendung von Scriptbibliotheken (Google Webfonts)</h3>
   <p>
-    In order to display our content correctly and graphically appealing across
-    browsers, we use "Google Web Fonts" from Google LLC (1600 Amphitheatre
-    Parkway, Mountain View, CA 94043, USA; hereinafter "Google") on this website
-    to display fonts.
+    Um unsere Inhalte browserübergreifend korrekt und grafisch ansprechend
+    darzustellen, verwenden wir auf dieser Website „Google Web Fonts“ der Google
+    LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; nachfolgend
+    „Google“) zur Darstellung von Schriften.
   </p>
 
-  <h3>Encryption of data</h3>
+  <h3>Verschlüsselung der Daten</h3>
   <p>
-    The hoster uses encryption procedures (TLS) via HTTPS. You can find more
-    information
-    <a href="https://docs.netlify.com/domains-https/https-ssl/">here</a>.
-  </p>
-
-  <h2>Disclosure, information and correction</h2>
-  <p>
-    You can exercise the following rights at any time using the contact details
-    provided:
-  </p>
-  <ul>
-    <li>information about your data stored by us and its processing</li>
-    <li>correction of incorrect personal data</li>
-    <li>deletion of your data stored by us</li>
-    <li>
-      restriction of data processing, if we are not yet allowed to delete your
-      data due to legal obligations
-    </li>
-    <li>objection to the processing of your data by us</li>
-    <li>
-      data portability, provided you have consented to data processing or have
-      concluded a contract with us
-    </li>
-  </ul>
-  <p>
-    If you have given us your consent, you may revoke it at any time with effect
-    for the future.
+    Der Hoster verwendet Verschlüsselungsverfahren (TLS) über HTTPS. Weitere
+    Informationen finden Sie
+    <a href="https://docs.netlify.com/domains-https/https-ssl/">hier</a>.
   </p>
 
   <h2>Links</h2>
   <p>
-    This data protection declaration only applies to the content of our website,
-    but not to websites that can be accessed via external links. If we offer
-    links, we make every effort to ensure that they also comply with our data
-    protection and security standards. However, we have no influence on
-    compliance with data protection and security regulations by other providers.
-    Therefore, please also inform yourself on the Internet pages of the other
-    providers about the data protection declarations provided there.
+    Diese Datenschutzerklärung erstreckt sich nur auf Inhalte unseres
+    Internet-Angebots, nicht jedoch auf Webseiten, welche über externe Links
+    aufgerufen werden können. Wenn wir Links anbieten, bemühen wir uns
+    sicherzustellen, dass auch diese unsere Datenschutz- und
+    Sicherheitsstandards einhalten. Wir haben jedoch keinen Einfluss auf die
+    Einhaltung der Datenschutz- und Sicherheitsbestimmungen durch andere
+    Anbieter. Informieren Sie sich deshalb bitte auf den Internetseiten der
+    anderen Anbieter auch über die dort bereitgestellten Datenschutzerklärungen.
   </p>
 
-  <h2>Changes to our data protection regulations</h2>
+  <h2>Auskunft, Information und Berichtigung</h2>
+  <p>Sie können jederzeit folgende Rechte ausüben:</p>
+  <ul>
+    <li>
+      Auskunft über Ihre bei uns gespeicherten Daten und deren Verarbeitung
+    </li>
+    <li>Berichtigung unrichtiger personenbezogener Daten</li>
+    <li>Löschung Ihrer bei uns gespeicherten Daten</li>
+    <li>
+      Einschränkung der Datenverarbeitung, sofern wir Ihre Daten aufgrund
+      gesetzlicher Pflichten noch nicht löschen dürfen
+    </li>
+    <li>Widerspruch gegen die Verarbeitung Ihrer Daten bei uns</li>
+    <li>
+      Datenübertragbarkeit, sofern Sie in die Datenverarbeitung eingewilligt
+      haben oder einen Vertrag mit uns abgeschlossen haben
+    </li>
+  </ul>
   <p>
-    We reserve the right to adapt this data protection declaration so that it
-    always complies with the current legal requirements or in order to implement
-    changes to our services in the data protection declaration, e.g. when
-    introducing new services. The new privacy policy will then apply to your
-    next visit.
+    Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit
+    mit Wirkung für die Zukunft widerrufen.<br />
+    Wenn Sie eine Berichtigung, Sperrung, Löschung oder Auskunft über die zu Ihrer
+    Person gespeicherten personenbezogenen Daten wünschen oder Fragen bzgl. der Erhebung,
+    Verarbeitung oder Verwendung Ihrer personenbezogenen Daten haben oder erteilte
+    Einwilligungen widerrufen möchten, wenden Sie sich bitte an folgende E-Mail-Adresse:
+    info@smarter-menu.de.
+  </p>
+
+  <h2>Änderung unserer Datenschutzbestimmungen</h2>
+  <p>
+    Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets
+    den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen
+    unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der
+    Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue
+    Datenschutzerklärung.
   </p>
 </div>
 

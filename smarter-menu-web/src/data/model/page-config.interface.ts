@@ -11,6 +11,7 @@ export interface PageConfig {
     footer: {
       slogan: string;
       data_privacy: string;
+      imprint: string;
     };
   };
   id: string;

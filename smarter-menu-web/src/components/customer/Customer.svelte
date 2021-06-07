@@ -24,6 +24,7 @@
   import { CategoryType } from '../../data/model/category-type.enum';
   import type { PageConfig } from '../../data/model/page-config.interface';
   import { getBaseCustomerPath } from '../../util/routes.util';
+  import Imprint from './Imprint.svelte';
 
   export let pageConfig: PageConfig;
 
@@ -52,6 +53,7 @@
   const bookmarksTitle = pageConfig.page_content.bookmarks.title;
   const slogan = pageConfig.page_content.footer.slogan;
   const dataPrivacy = pageConfig.page_content.footer.data_privacy;
+  const imprint = pageConfig.page_content.footer.imprint;
   const homeBreadCrumb = pageConfig.page_content.categories.home_bread_crumb;
   const allergensLabel = pageConfig.page_content.menu_items.allergens;
 
@@ -109,6 +111,14 @@
       />
       <DataPrivacy />
     </Route>
+    <Route path="imprint">
+      <HomeBreadCrumb
+        {homePath}
+        {homeBreadCrumb}
+        activeItem$={Promise.resolve(imprint)}
+      />
+      <Imprint />
+    </Route>
   </main>
-  <footer><Footer {slogan} {dataPrivacy} /></footer>
+  <footer><Footer {slogan} {dataPrivacy} {imprint} /></footer>
 </div>
