@@ -10,7 +10,7 @@
   import { getRouteToCategory } from './util/category.util';
   import { useNavigate } from 'svelte-navigator';
   import type { Category } from '../../data/model/category.interface';
-  import { getCategoriesByIds } from '../../data/data.util';
+  import { getCategoriesByIds } from '../../data/data';
   export let category: Category;
   const subCategories$: Promise<Category[]> = category.sub_categories
     ? getCategoriesByIds(category.sub_categories)

@@ -1,6 +1,6 @@
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { getMenuItemsByIds } from '../data/data.util';
+import { getMenuItemsByIds } from '../data/data';
 import type { MenuItem } from '../data/model/menu-item.interface';
 import type { BookmarkMap } from './model/bookmark-map.interface';
 import type { BookmarkInfo } from './model/bookmark-info.interface';

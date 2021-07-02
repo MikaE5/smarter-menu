@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Badge } from 'sveltestrap';
-  import { getClassificationsByIds } from '../../../data/data.util';
+  import { getClassificationsByIds } from '../../../data/data';
   import type { Classification } from '../../../data/model/classification.interface';
 
   export let classificationIds: string[];

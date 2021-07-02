@@ -5,11 +5,12 @@ import type { Allergen } from './model/allergen.interface';
 import type { CategoryType } from './model/category-type.enum';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
+import { sortByKeys } from '../util/array.util';
 
 let dataCustomer: string;
 const dataCustomer$: BehaviorSubject<string> = new BehaviorSubject(undefined);
-let categories: Promise<Category[]> = undefined;
-let menuItems: Promise<MenuItem[]> = undefined;
+let categories: Category[] = undefined;
+let menuItems: MenuItem[] = undefined;
 let allergens: Promise<Allergen[]> = undefined;
 let classifications: Promise<Classification[]> = undefined;
 
@@ -61,7 +62,9 @@ const baseRequest = async (endpoint: string, fallback?: any): Promise<any> => {
 
 const getCategories = async (): Promise<Category[]> => {
   if (categories === undefined) {
-    categories = (await baseRequest('categories', [])).data;
+    categories = sortByKeys((await baseRequest('categories', [])).data, [
+      'name',
+    ]) as Category[];
   }
 
   return categories;
@@ -69,9 +72,11 @@ const getCategories = async (): Promise<Category[]> => {
 
 const getMenuItems = async (): Promise<MenuItem[]> => {
   if (menuItems === undefined) {
-    menuItems = (await baseRequest('items', [])).data;
+    menuItems = sortByKeys((await baseRequest('items', [])).data, [
+      'item_number',
+      'name',
+    ]) as MenuItem[];
   }
-
   return menuItems;
 };
 
@@ -114,24 +119,37 @@ export const getMenuItemsForCategory = async (
   categoryId: string,
   getMenuItemsForSubCategories = false
 ): Promise<MenuItem[]> => {
-  let categoryIdSet: Set<string> = new Set([categoryId]);
+  let categories: string[] = [categoryId];
   if (getMenuItemsForSubCategories) {
     const foundCategories = await getCategoriesByIds([categoryId]);
     if (
       foundCategories.length > 0 &&
       foundCategories[0].sub_categories !== undefined
     ) {
-      categoryIdSet = new Set([
-        ...categoryIdSet,
-        ...foundCategories[0].sub_categories,
-      ]);
+      categories = categories.concat(foundCategories[0].sub_categories);
     }
   }
+  const itemMap: { [categoryId: string]: MenuItem[] } = {};
+  const menuItems: MenuItem[] = await getMenuItems();
+  const categoryIdSet: Set<string> = new Set(categories);
+  menuItems.forEach((item: MenuItem) => {
+    const id = item.categories.find((id) => categoryIdSet.has(id));
+    if (id === undefined) return;
 
-  return (await getMenuItems()).filter(
-    (item: MenuItem) =>
-      item.categories.findIndex((id) => categoryIdSet.has(id)) !== -1
-  );
+    if (itemMap[id] === undefined) {
+      itemMap[id] = [item];
+    } else {
+      itemMap[id].push(item);
+    }
+  });
+
+  return categories.reduce((allItems, id) => {
+    const items = itemMap[id];
+    if (items !== undefined) {
+      return allItems.concat(items);
+    }
+    return allItems;
+  }, []);
 };
 
 export const getMenuItemsByIds = async (ids: string[]): Promise<MenuItem[]> => {

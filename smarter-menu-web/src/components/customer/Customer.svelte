@@ -20,7 +20,7 @@
     getCategoryNameForId,
     removeDataCustomer,
     setDataCustomer,
-  } from '../../data/data.util';
+  } from '../../data/data';
   import { CategoryType } from '../../data/model/category-type.enum';
   import type { PageConfig } from '../../data/model/page-config.interface';
   import { getBaseCustomerPath } from '../../util/routes.util';

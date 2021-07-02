@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getCategoriesByType } from '../../data/data.util';
+  import { getCategoriesByType } from '../../data/data';
   import Category from './Category.svelte';
   import type { Category as ICategory } from '../../data/model/category.interface';
   import { Row, Col } from 'sveltestrap';
