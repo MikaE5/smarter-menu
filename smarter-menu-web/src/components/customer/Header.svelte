@@ -54,6 +54,7 @@
     icon="bookmark"
     click={() => navigateTo('bookmarks')}
     counter={overallPrice}
+    size={3}
   />
   <NavbarToggler on:click={toggle} class="ml-2" />
   <Collapse {isOpen} navbar>
