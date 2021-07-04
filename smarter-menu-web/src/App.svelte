@@ -22,17 +22,23 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
   />
+  <link
+    rel="stylesheet"
+    href="./app.css"
+  />
   <title>{title}</title>
 </svelte:head>
 
-<Router>
-  <Route path="/" primary={false}>
-    <DummyLink />
-  </Route>
 
-  {#each pageConfigs as config}
-    <Route path={getBaseCustomerPath(config.customer_id) + '/*'} primary={false}
-      ><Customer pageConfig={config} /></Route
-    >
-  {/each}
-</Router>
+  <Router>
+    <Route path="/" primary={false}>
+      <DummyLink />
+    </Route>
+  
+    {#each pageConfigs as config}
+      <Route path={getBaseCustomerPath(config.customer_id) + '/*'} primary={false}
+        ><Customer pageConfig={config} /></Route
+      >
+    {/each}
+  </Router>
+

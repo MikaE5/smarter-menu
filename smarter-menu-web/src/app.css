@@ -1,0 +1,15 @@
+:root {
+  --smarter-menu-light-accent: #a0ce5f;
+  --smarter-menu-dark-accent: #088b4f;
+  --smarter-menu-primary: #f1f2f3;
+}
+
+.smarter-menu-light-accent-bg {
+  background-color: #a0ce5f !important;
+}
+.smarter-menu-dark-accent-bg {
+  background-color: #088b4f !important;
+}
+.smarter-menu-primary-bg {
+  background-color: #f1f2f3 !important;
+}
