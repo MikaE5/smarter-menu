@@ -1,20 +1,12 @@
 <script lang="ts">
   import {Link} from 'svelte-navigator'
+import { getBaseCustomerPath } from '../../util/routes.util';
 
 </script>
-
-
-<svelte:head>
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript
-    ><link rel="stylesheet" href="assets/css/noscript.css"
-  /></noscript>
-</svelte:head>
 
 <div class="is-preload"> 
   <!-- Wrapper -->
     <div id="wrapper" class="divided">
-
       <!-- Top -->
         <section class="banner style4 orient-center content-align-left image-position-left fullscreen onload-image-fade-in onload-content-fade-right color1">
           <div class="content">
@@ -25,7 +17,8 @@
               <li><a href="#benefits" class="button big wide">Erfahre mehr</a></li>
             </ul>
             <ul class="actions stacked">
-              <li><a href=https://www.smarter-menu.de/menu/adobo class="button big wide">Schau dir ein Kundenbeispiel an</a></li>
+              <li>
+                <Link to={getBaseCustomerPath('adobo')} class="button big wide">Schau dir ein Kundenbeispiel an</Link>
             </ul>
           </div>
           <div class="image">
