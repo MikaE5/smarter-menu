@@ -3,9 +3,9 @@
   import { Row, Col } from 'sveltestrap';
   import type { MenuItem as MenuItemType } from '../../data/model/menu-item.interface';
   import MenuItem from './MenuItem.svelte';
+import BookmarkButton from './BookmarkButton.svelte';
 
   export let categoryId: string;
-  export let allergensLabel: string;
 
   let menuItems$: Promise<MenuItemType[]>;
   $: {
@@ -19,9 +19,10 @@
     {#each menuItems as menuItem}
       <Col>
         <div class="mb-1 mt-1">
-          <MenuItem {allergensLabel} {menuItem} />
+          <MenuItem {menuItem} />
         </div>
       </Col>
     {/each}
   </Row>
 {/await}
+<BookmarkButton></BookmarkButton>

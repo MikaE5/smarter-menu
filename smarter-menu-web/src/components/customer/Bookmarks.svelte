@@ -14,8 +14,8 @@
     BookmarkItem,
   } from '../../bookmarks/model/bookmark-info.interface';
   import ItemLabel from './menu-item/ItemLabel.svelte';
+import { pageConfigStore } from '../../stores/page-config.stores';
 
-  export let emptyItemsMessage: string;
   let totalPrice: string;
   let bookmarks: BookmarkItem[] = [];
   const listenerId = addBookmarksListener((info: BookmarkInfo) => {
@@ -72,5 +72,5 @@
     </tbody>
   </Table>
 {:else}
-  <p>{emptyItemsMessage}</p>
+  <p>{$pageConfigStore.page_content.bookmarks.no_items}</p>
 {/if}

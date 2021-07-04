@@ -14,12 +14,11 @@
     addBookmarkOverallPriceListener,
     removeBookmarkOverallPriceListener,
   } from '../../bookmarks/bookmarks';
+  import { homePathStore, pageConfigStore } from '../../stores/page-config.stores';
   import { getPriceString } from '../../util/price.util';
   import CounterIcon from './shared/CounterIcon.svelte';
 
-  export let title: string;
   export let navItems: Array<{ title: string; route: string }>;
-  export let homePath: string;
 
   let overallPrice: string = '';
   const priceListenerId = addBookmarkOverallPriceListener(
@@ -46,8 +45,8 @@
 
 <Navbar color="info" light>
   <div class="mr-auto" on:click={closeIfOpen}>
-    <Link to={homePath}>
-      <NavbarBrand>{title}</NavbarBrand>
+    <Link to={$homePathStore}>
+      <NavbarBrand>{$pageConfigStore.page_content.header.title}</NavbarBrand>
     </Link>
   </div>
   <CounterIcon

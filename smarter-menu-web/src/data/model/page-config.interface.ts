@@ -3,6 +3,7 @@ export interface PageConfig {
   page_content: {
     bookmarks: {
       title: string;
+      to_bookmarks: string;
       no_items: string;
     };
     header: { title: string };

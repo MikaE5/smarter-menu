@@ -1,1 +1,66 @@
-[{"customer_id":"smarter-menu","page_content":{"bookmarks":{"title":"Merkliste","no_items":"Keine Einträge in der Merkliste."},"header":{"title":"smarter-menu"},"menu_items":{"allergens":"Allergene"},"categories":{"home_bread_crumb":"Übersicht"},"footer":{"data_privacy":"Datenschutz","slogan":"made possible with smarter-menu"}},"id":"page-config/smarter-menu","style":{"theme_url":"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"}},{"customer_id":"smarter-menu-test","page_content":{"bookmarks":{"title":"Merkliste","no_items":"Keine Einträge in der Merkliste."},"header":{"title":"smarter-menu-test"},"menu_items":{"allergens":"Allergene"},"categories":{"home_bread_crumb":"Übersicht"},"footer":{"slogan":"made possible with smarter-menu","data_privacy":"Datenschutz"}},"id":"page-config/smarter-menu-test","style":{"theme_url":"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"}}]
+[
+  {
+    "customer_id": "smarter-menu",
+    "page_content": {
+      "bookmarks": {
+        "title": "Merkliste",
+        "to_bookmarks": "Zur Merkliste",
+        "no_items": "Keine Einträge in der Merkliste."
+      },
+      "header": { "title": "smarter-menu" },
+      "menu_items": { "allergens": "Allergene" },
+      "categories": { "home_bread_crumb": "Übersicht" },
+      "footer": {
+        "data_privacy": "Datenschutz",
+        "slogan": "made possible with smarter-menu",
+        "imprint": "Impressum"
+      }
+    },
+    "id": "page-config/smarter-menu",
+    "style": {
+      "theme_url": "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    }
+  },
+  {
+    "customer_id": "adobo",
+    "page_content": {
+      "bookmarks": {
+        "title": "Merkliste",
+        "no_items": "Keine Einträge in der Merkliste."
+      },
+      "header": { "title": "ADOBO" },
+      "menu_items": { "allergens": "Allergene" },
+      "categories": { "home_bread_crumb": "Übersicht" },
+      "footer": {
+        "data_privacy": "Datenschutz",
+        "slogan": "made possible with smarter-menu",
+        "imprint": "Impressum"
+      }
+    },
+    "id": "page-config/adobo",
+    "style": {
+      "theme_url": "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    }
+  },
+  {
+    "customer_id": "smarter-menu-test",
+    "page_content": {
+      "bookmarks": {
+        "title": "Merkliste",
+        "no_items": "Keine Einträge in der Merkliste."
+      },
+      "header": { "title": "smarter-menu-test" },
+      "menu_items": { "allergens": "Allergene" },
+      "categories": { "home_bread_crumb": "Übersicht" },
+      "footer": {
+        "data_privacy": "Datenschutz",
+        "slogan": "made possible with smarter-menu",
+        "imprint": "Impressum"
+      }
+    },
+    "id": "page-config/smarter-menu-test",
+    "style": {
+      "theme_url": "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    }
+  }
+]

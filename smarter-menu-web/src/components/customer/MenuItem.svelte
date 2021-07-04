@@ -26,8 +26,8 @@
   import Counter from './shared/Counter.svelte';
   import IconButton from './shared/IconButton.svelte';
   import ItemLabel from './menu-item/ItemLabel.svelte';
+import { pageConfigStore } from '../../stores/page-config.stores';
   export let menuItem: MenuItem;
-  export let allergensLabel: string;
 
   let imgSrc: string;
   let priceString: string;
@@ -98,7 +98,7 @@
               ><div class="d-flex justify-content-between">
                 {#if menuItem.allergens}
                   <IconButton
-                    label={allergensLabel}
+                    label={$pageConfigStore.page_content.menu_items.allergens}
                     icon="info-circle"
                     click={toggleAllergensModal}
                   />

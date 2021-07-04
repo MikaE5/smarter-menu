@@ -4,6 +4,7 @@
   import type { Category as ICategory } from '../../data/model/category.interface';
   import { Row, Col } from 'sveltestrap';
   import { CategoryType } from '../../data/model/category-type.enum';
+import BookmarkButton from './BookmarkButton.svelte';
 
   const categories$: Promise<ICategory[]> = getCategoriesByType(
     CategoryType.C1
@@ -21,3 +22,4 @@
     {/each}
   </Row>
 {/await}
+<BookmarkButton></BookmarkButton>

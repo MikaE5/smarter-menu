@@ -25,14 +25,15 @@
   import type { PageConfig } from '../../data/model/page-config.interface';
   import { getBaseCustomerPath } from '../../util/routes.util';
   import Imprint from './Imprint.svelte';
+  import { homePathStore, pageConfigStore } from '../../stores/page-config.stores';
 
   export let pageConfig: PageConfig;
 
-  let homePath: string;
 
   $: setBookmarkCustomer(pageConfig.customer_id);
   $: setDataCustomer(pageConfig.customer_id);
-  $: homePath = getBaseCustomerPath(pageConfig.customer_id);
+  $: homePathStore.set(getBaseCustomerPath(pageConfig.customer_id))
+  $: pageConfigStore.set(pageConfig);
 
   // get first level categories
   let navItems: Array<{ title: string; route: string }> = [];
@@ -48,14 +49,9 @@
     )
     .then((items) => (navItems = items));
 
-  const title = pageConfig.page_content.header.title;
-  const emptyItemsMessage = pageConfig.page_content.bookmarks.no_items;
   const bookmarksTitle = pageConfig.page_content.bookmarks.title;
-  const slogan = pageConfig.page_content.footer.slogan;
   const dataPrivacy = pageConfig.page_content.footer.data_privacy;
   const imprint = pageConfig.page_content.footer.imprint;
-  const homeBreadCrumb = pageConfig.page_content.categories.home_bread_crumb;
-  const allergensLabel = pageConfig.page_content.menu_items.allergens;
 
   setTimeout(() => {
     deleteOldLocalStorageVersions();
@@ -68,17 +64,17 @@
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href={pageConfig.style.theme_url} />
+  <link rel="stylesheet" href={$pageConfigStore.style.theme_url} />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
   />
-  <title>{title}</title>
+  <title>{$pageConfigStore.page_content.header.title}</title>
 </svelte:head>
 
 <div class="d-flex flex-column min-vh-100">
   <header>
-    <Header {navItems} {title} {homePath} />
+    <Header {navItems}/>
   </header>
   <main class="flex-grow-1">
     <Route path="/" primary={false}>
@@ -86,39 +82,30 @@
     </Route>
     <Route path="category/:category" primary={false} let:params>
       <HomeBreadCrumb
-        {homeBreadCrumb}
-        {homePath}
         activeItem$={getCategoryNameForId(decodeURIComponent(params.category))}
       />
       <MenuItems
-        {allergensLabel}
         categoryId={decodeURIComponent(params.category)}
       />
     </Route>
     <Route path="bookmarks" primary={false}>
       <HomeBreadCrumb
-        {homePath}
-        {homeBreadCrumb}
         activeItem$={Promise.resolve(bookmarksTitle)}
       />
-      <Bookmarks {emptyItemsMessage} />
+      <Bookmarks/>
     </Route>
     <Route path="privacy">
       <HomeBreadCrumb
-        {homePath}
-        {homeBreadCrumb}
         activeItem$={Promise.resolve(dataPrivacy)}
       />
       <DataPrivacy />
     </Route>
     <Route path="imprint">
       <HomeBreadCrumb
-        {homePath}
-        {homeBreadCrumb}
         activeItem$={Promise.resolve(imprint)}
       />
       <Imprint />
     </Route>
   </main>
-  <footer><Footer {slogan} {dataPrivacy} {imprint} /></footer>
+  <footer><Footer /></footer>
 </div>

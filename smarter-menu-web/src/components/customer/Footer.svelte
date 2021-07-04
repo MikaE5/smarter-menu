@@ -1,9 +1,7 @@
 <script lang="ts">
   import { Link } from 'svelte-navigator';
   import { NavLink, Nav, NavItem } from 'sveltestrap';
-  export let slogan: string;
-  export let dataPrivacy: string;
-  export let imprint: string;
+  import { pageConfigStore } from '../../stores/page-config.stores';
 
   const openExternal = (url: string) => {
     // do nothing for now
@@ -15,14 +13,14 @@
   <Nav vertical>
     <NavItem>
       <NavLink on:click={() => openExternal('https://www.smarter-menu.de')}
-        >{slogan}</NavLink
+        >{$pageConfigStore.page_content.footer.slogan}</NavLink
       >
     </NavItem>
     <NavItem>
-      <NavLink><Link to="privacy">{dataPrivacy}</Link></NavLink>
+      <NavLink><Link to="privacy">{$pageConfigStore.page_content.footer.data_privacy}</Link></NavLink>
     </NavItem>
     <NavItem>
-      <NavLink><Link to="imprint">{imprint}</Link></NavLink>
+      <NavLink><Link to="imprint">{$pageConfigStore.page_content.footer.imprint}</Link></NavLink>
     </NavItem>
   </Nav>
 </div>
