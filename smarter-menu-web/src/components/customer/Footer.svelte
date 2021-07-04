@@ -2,19 +2,14 @@
   import { Link } from 'svelte-navigator';
   import { NavLink, Nav, NavItem } from 'sveltestrap';
   import { pageConfigStore } from '../../stores/page-config.stores';
-import SmarterMenuLink from './shared/SmarterMenuLink.svelte';
-
-  const openExternal = (url: string) => {
-    // do nothing for now
-    //window.open(url, '_blank').focus();
-  };
+  import SmarterMenuLink from './shared/SmarterMenuLink.svelte';
 </script>
 
 <div class="border-top">
   <Nav vertical>
     <NavItem>
-      <NavLink on:click={() => openExternal('https://www.smarter-menu.de')}
-        ><SmarterMenuLink label={$pageConfigStore.page_content.footer.slogan}></SmarterMenuLink></NavLink
+      <NavLink
+        ><SmarterMenuLink to="/" label={$pageConfigStore.page_content.footer.slogan}></SmarterMenuLink></NavLink
       >
     </NavItem>
     <NavItem>

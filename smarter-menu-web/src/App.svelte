@@ -4,8 +4,11 @@
   import Customer from './components/customer/Customer.svelte';
   import type { PageConfig } from './data/model/page-config.interface';
   import { getBaseCustomerPath } from './util/routes.util';
-  import DummyLink from './components/DummyLink.svelte';
   import pageConfigsJson from './page-configs.json';
+  import SmarterMenuPage from './components/smarter-menu-page/SmarterMenuPage.svelte';
+  import Imprint from './components/customer/Imprint.svelte';
+  import DataPrivacy from './components/customer/DataPrivacy.svelte';
+  import './app.css'
 
   const pageConfigs: PageConfig[] = pageConfigsJson as any;
 
@@ -22,17 +25,19 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
   />
-  <link
-    rel="stylesheet"
-    href="./app.css"
-  />
   <title>{title}</title>
 </svelte:head>
 
 
   <Router>
     <Route path="/" primary={false}>
-      <DummyLink />
+      <SmarterMenuPage></SmarterMenuPage>
+    </Route>
+    <Route path="/imprint" primary={false}>
+      <Imprint></Imprint>
+    </Route>
+    <Route path="/privacy" primary={false}>
+      <DataPrivacy></DataPrivacy>
     </Route>
   
     {#each pageConfigs as config}

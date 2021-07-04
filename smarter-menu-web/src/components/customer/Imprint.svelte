@@ -1,6 +1,10 @@
 <div class="privacy-policy">
   <h1>Impressum</h1>
   <p>
+    Josias Knöppler<br />
+    Dreieichstraße 43<br />
+    60594 Frankfurt<br />
+    <br />
     Mika Eckhardt<br />
     Lindenhofstraße 52<br />
     68163 Mannheim<br />

@@ -67,12 +67,13 @@
     <a href="https://www.netlify.com/gdpr-ccpa">hier</a>.
   </p>
 
-  <h3>Verwendung von Scriptbibliotheken (Google Webfonts)</h3>
+  <h3>Verwendung von Scriptbibliotheken (Google Webfonts, Font Awesome, Bootstrap CDN)</h3>
   <p>
     Um unsere Inhalte browserübergreifend korrekt und grafisch ansprechend
     darzustellen, verwenden wir auf dieser Website „Google Web Fonts“ der Google
     LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; nachfolgend
-    „Google“) zur Darstellung von Schriften.
+    „Google“) zur Darstellung von Schriften, Web Fonts und Icons von Font Awesome (nachfolgend „Font Awesome“) sowie das CSS Framework Bootstrap des Unternehmens LLC. NetDNA (3575, Cahuenga Blvd Suite 630, Los Angeles, CA 90068, USA nachfolgend „Bootstrap CDN“).
+    Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google, Font Awesome und Bootstrap CDN aufnehmen. Hierdurch können gegebenenfalls an die Server von Google, Font Awesome und Bootstrap CDN ggf. personenbezogene Daten, z.B. Ihre IP-Adresse, gesendet werden.
   </p>
 
   <h3>Verschlüsselung der Daten</h3>
@@ -136,5 +137,17 @@
   .privacy-policy {
     width: 90%;
     margin: auto;
+  }
+
+  h1 {
+    font-size: larger;
+  }
+
+  h2 {
+    font-size: medium;
+  }
+
+  h3 {
+    font-size: smaller;
   }
 </style>
