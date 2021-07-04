@@ -43,7 +43,8 @@
   });
 </script>
 
-<Navbar color="info" light>
+<div class="smarter-menu-dark-accent-bg header-wrapper">
+<Navbar light>
   <div class="mr-auto" on:click={closeIfOpen}>
     <Link to={$homePathStore}>
       <NavbarBrand>{$pageConfigStore.page_content.header.title}</NavbarBrand>
@@ -55,14 +56,29 @@
     counter={overallPrice}
     size={3}
   />
-  <NavbarToggler on:click={toggle} class="ml-2" />
+  <NavbarToggler on:click={toggle} class="ml-2 smarter-menu-navbar-toggler" />
   <Collapse {isOpen} navbar>
     <Nav navbar justified>
       {#each navItems as navItem}
-        <NavLink on:click={() => navigateTo(navItem.route)}
-          >{navItem.title}</NavLink
-        >
+        <div class="d-flex justify-content-center w-100 p-1 nav-item-text" on:click={() => navigateTo(navItem.route)}
+          >{navItem.title}</div
+        > 
       {/each}
+      <div class="d-flex justify-content-center w-100 p-1 border-top nav-item-bookmarks" on:click={() => navigateTo('bookmarks')}>{$pageConfigStore.page_content.bookmarks.to_bookmarks}</div>
     </Nav>
   </Collapse>
 </Navbar>
+</div>
+
+<style>
+  .header-wrapper :global(.smarter-menu-navbar-toggler) {
+    background-color: var(--smarter-menu-dark-accent) !important;
+  }
+  .header-wrapper :global(.nav-item-text) {
+    color: black !important;
+  }
+  .header-wrapper :global(.nav-item-bookmarks) {
+    color: black !important;
+    border-color: var(--smarter-menu-light-accent) !important;
+  }
+</style>

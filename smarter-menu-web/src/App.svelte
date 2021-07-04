@@ -7,7 +7,7 @@
   import DummyLink from './components/DummyLink.svelte';
   import pageConfigsJson from './page-configs.json';
 
-  const pageConfigs: PageConfig[] = pageConfigsJson;
+  const pageConfigs: PageConfig[] = pageConfigsJson as any;
 
   const smarterMenuConfig = pageConfigs.find(
     (config) => config.customer_id === 'smarter-menu'

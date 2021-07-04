@@ -63,7 +63,7 @@ import { pageConfigStore } from '../../stores/page-config.stores';
           </td> -->
         </tr>
       {/each}
-      <tr class="border-top border-danger">
+      <tr class="border-top smarter-menu-border">
         <td />
         <td />
         <td><span class="d-flex justify-content-end">{totalPrice}</span></td>
@@ -74,3 +74,9 @@ import { pageConfigStore } from '../../stores/page-config.stores';
 {:else}
   <p>{$pageConfigStore.page_content.bookmarks.no_items}</p>
 {/if}
+
+<style>
+  .smarter-menu-border {
+    border-color: var(--smarter-menu-light-accent) !important;
+  }
+</style>
