@@ -6,34 +6,30 @@ import type { CategoryType } from './model/category-type.enum';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { sortByKeys } from '../util/array.util';
+import {
+  allergens$,
+  categories$,
+  classifications$,
+  dataCustomer$,
+  menuItems$,
+} from '../stores/data.stores';
 
 let dataCustomer: string;
-const dataCustomer$: BehaviorSubject<string> = new BehaviorSubject(undefined);
-let categories: Category[] = undefined;
-let menuItems: MenuItem[] = undefined;
-let allergens: Promise<Allergen[]> = undefined;
-let classifications: Promise<Classification[]> = undefined;
 
 export const setDataCustomer = (customer: string) => {
   // reset data to allow refetch for different customer
-  categories = undefined;
-  menuItems = undefined;
-  allergens = undefined;
-  classifications = undefined;
+  categories$.next(undefined);
+  menuItems$.next(undefined);
+  allergens$.next(undefined);
+  allergens$.next(undefined);
+  classifications$.next(undefined);
 
   dataCustomer = customer;
   dataCustomer$.next(dataCustomer);
 };
 
 export const removeDataCustomer = () => {
-  // reset data to allow refetch for different customer
-  categories = undefined;
-  menuItems = undefined;
-  allergens = undefined;
-  classifications = undefined;
-
-  dataCustomer = undefined;
-  dataCustomer$.next(undefined);
+  setDataCustomer(undefined);
 };
 
 const baseRequest = async (endpoint: string, fallback?: any): Promise<any> => {
@@ -61,45 +57,51 @@ const baseRequest = async (endpoint: string, fallback?: any): Promise<any> => {
 };
 
 const getCategories = async (): Promise<Category[]> => {
-  if (categories === undefined) {
-    categories = sortByKeys((await baseRequest('categories', [])).data, [
-      'name',
-    ]) as Category[];
+  if (categories$.getValue() === undefined) {
+    categories$.next(
+      sortByKeys((await baseRequest('categories', [])).data, [
+        'name',
+      ]) as Category[]
+    );
   }
 
-  return categories;
+  return categories$.getValue();
 };
 
 const getMenuItems = async (): Promise<MenuItem[]> => {
-  if (menuItems === undefined) {
-    menuItems = sortByKeys((await baseRequest('items', [])).data, [
-      'item_number',
-      'name',
-    ]) as MenuItem[];
+  if (menuItems$.getValue() === undefined) {
+    menuItems$.next(
+      sortByKeys((await baseRequest('items', [])).data, [
+        'item_number',
+        'name',
+      ]) as MenuItem[]
+    );
   }
-  return menuItems;
+  return menuItems$.getValue();
 };
 
 const getMetaData = async () => {
   const metaData = (await baseRequest('items-meta', [])).data;
-  allergens = metaData.filter((meta) => meta.id.startsWith('meta/allergen'));
-  classifications = metaData.filter((meta) =>
-    meta.id.startsWith('meta/classification')
+  allergens$.next(
+    metaData.filter((meta) => meta.id.startsWith('meta/allergen'))
+  );
+  classifications$.next(
+    metaData.filter((meta) => meta.id.startsWith('meta/classification'))
   );
 };
 
 const getAllergens = async (): Promise<Allergen[]> => {
-  if (allergens === undefined) {
+  if (allergens$.getValue() === undefined) {
     await getMetaData();
   }
-  return allergens;
+  return allergens$.getValue();
 };
 
 const getClassifications = async (): Promise<Classification[]> => {
-  if (classifications === undefined) {
+  if (classifications$.getValue() === undefined) {
     await getMetaData();
   }
-  return classifications;
+  return classifications$.getValue();
 };
 
 export const getCategoriesByType = async (
