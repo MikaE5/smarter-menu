@@ -3313,6 +3313,8 @@ body.is-preload .spotlight.onload-image-fade-in .image img {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
 }
 
 .gallery > article {
