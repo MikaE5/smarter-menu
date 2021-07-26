@@ -60,6 +60,7 @@ const getCategories = async (): Promise<Category[]> => {
   if (categories$.getValue() === undefined) {
     categories$.next(
       sortByKeys((await baseRequest('categories', [])).data, [
+        'category_number',
         'name',
       ]) as Category[]
     );
