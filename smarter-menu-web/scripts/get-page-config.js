@@ -7,6 +7,13 @@ dotenv.config();
 const getPageConfig = async () => {
   console.log(`\n\n### Start fetching page configs: ###\n`);
 
+  const environment = process.env.ENVIRONMENT;
+  const DEV_CONFIGS = ['smarter-menu', 'smarter-menu-test'];
+
+  if (environment !== undefined && environment === 'dev') {
+    console.log(`\n\n### Fetching page configs for DEV environment: ###\n`);
+  }
+
   const res = await fetch(
     'https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/page-configs',
 
@@ -23,7 +30,10 @@ const getPageConfig = async () => {
       process.exit(1);
     });
 
-  const pageConfigs = res.data;
+  const pageConfigs =
+    environment === 'dev'
+      ? res.data.filter((config) => DEV_CONFIGS.includes(config.customer_id))
+      : res.data;
   if (pageConfigs === undefined) {
     console.log('### No page configs available.');
     process.exit(1);
