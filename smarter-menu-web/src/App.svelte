@@ -8,7 +8,7 @@
   import SmarterMenuPage from './components/smarter-menu-page/SmarterMenuPage.svelte';
   import Imprint from './components/customer/Imprint.svelte';
   import DataPrivacy from './components/customer/DataPrivacy.svelte';
-  import './app.css'
+  import './app.css';
 
   const pageConfigs: PageConfig[] = pageConfigsJson as any;
 
@@ -20,7 +20,10 @@
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href={smarterMenuConfig.style.theme_url} />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
@@ -28,22 +31,20 @@
   <title>{title}</title>
 </svelte:head>
 
+<Router>
+  <Route path="/" primary={false}>
+    <SmarterMenuPage />
+  </Route>
+  <Route path="/imprint" primary={false}>
+    <Imprint />
+  </Route>
+  <Route path="/privacy" primary={false}>
+    <DataPrivacy />
+  </Route>
 
-  <Router>
-    <Route path="/" primary={false}>
-      <SmarterMenuPage></SmarterMenuPage>
-    </Route>
-    <Route path="/imprint" primary={false}>
-      <Imprint></Imprint>
-    </Route>
-    <Route path="/privacy" primary={false}>
-      <DataPrivacy></DataPrivacy>
-    </Route>
-  
-    {#each pageConfigs as config}
-      <Route path={getBaseCustomerPath(config.customer_id) + '/*'} primary={false}
-        ><Customer pageConfig={config} /></Route
-      >
-    {/each}
-  </Router>
-
+  {#each pageConfigs as config}
+    <Route path={getBaseCustomerPath(config.customer_id) + '/*'} primary={false}
+      ><Customer pageConfig={config} /></Route
+    >
+  {/each}
+</Router>

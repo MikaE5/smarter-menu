@@ -1,5 +1,10 @@
 export interface PageConfig {
   customer_id: string;
+  customer_information?: {
+    name: string;
+    address: string[];
+    maps_link?: string;
+  };
   page_content: {
     bookmarks: {
       title: string;
@@ -16,7 +21,4 @@ export interface PageConfig {
     };
   };
   id: string;
-  style: {
-    theme_url: string;
-  };
 }

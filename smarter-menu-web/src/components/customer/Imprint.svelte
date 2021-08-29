@@ -1,7 +1,7 @@
 <div class="privacy-policy">
   <h1>Impressum</h1>
   <p>
-    GbR Mika Eckhardt, Josias Knöppler<br />
+    GbR Mika Eckhardt und Josias Knöppler<br />
     Lindenhofstraße 52<br />
     68163 Mannheim<br />
     <br />

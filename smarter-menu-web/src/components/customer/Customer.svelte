@@ -25,14 +25,16 @@
   import type { PageConfig } from '../../data/model/page-config.interface';
   import { getBaseCustomerPath } from '../../util/routes.util';
   import Imprint from './Imprint.svelte';
-  import { homePathStore, pageConfigStore } from '../../stores/page-config.stores';
+  import {
+    homePathStore,
+    pageConfigStore,
+  } from '../../stores/page-config.stores';
 
   export let pageConfig: PageConfig;
 
-
   $: setBookmarkCustomer(pageConfig.customer_id);
   $: setDataCustomer(pageConfig.customer_id);
-  $: homePathStore.set(getBaseCustomerPath(pageConfig.customer_id))
+  $: homePathStore.set(getBaseCustomerPath(pageConfig.customer_id));
   $: pageConfigStore.set(pageConfig);
 
   // get first level categories
@@ -64,7 +66,6 @@
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href={$pageConfigStore.style.theme_url} />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
@@ -74,7 +75,7 @@
 
 <div class="d-flex flex-column min-vh-100">
   <header>
-    <Header {navItems}/>
+    <Header {navItems} />
   </header>
   <main class="flex-grow-1">
     <Route path="/" primary={false}>
@@ -84,26 +85,18 @@
       <HomeBreadCrumb
         activeItem$={getCategoryNameForId(decodeURIComponent(params.category))}
       />
-      <MenuItems
-        categoryId={decodeURIComponent(params.category)}
-      />
+      <MenuItems categoryId={decodeURIComponent(params.category)} />
     </Route>
     <Route path="bookmarks" primary={false}>
-      <HomeBreadCrumb
-        activeItem$={Promise.resolve(bookmarksTitle)}
-      />
-      <Bookmarks/>
+      <HomeBreadCrumb activeItem$={Promise.resolve(bookmarksTitle)} />
+      <Bookmarks />
     </Route>
     <Route path="privacy">
-      <HomeBreadCrumb
-        activeItem$={Promise.resolve(dataPrivacy)}
-      />
+      <HomeBreadCrumb activeItem$={Promise.resolve(dataPrivacy)} />
       <DataPrivacy />
     </Route>
     <Route path="imprint">
-      <HomeBreadCrumb
-        activeItem$={Promise.resolve(imprint)}
-      />
+      <HomeBreadCrumb activeItem$={Promise.resolve(imprint)} />
       <Imprint />
     </Route>
   </main>
