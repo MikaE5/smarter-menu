@@ -103,12 +103,14 @@
       iconPosition="right"
     />
     {#if filtersOpen && activeClassifications.length > 0}
-      <IconButton
-        label="Alle zurücksetzen"
-        iconPosition="right"
-        icon="x"
-        click={() => resetFilters()}
-      />
+      <div class="ml-1">
+        <IconButton
+          label="Alle zurücksetzen"
+          iconPosition="right"
+          icon="x"
+          click={() => resetFilters()}
+        />
+      </div>
     {/if}
   </div>
 
@@ -148,5 +150,9 @@
 
   .filter-button-container :global(p) {
     margin-block-end: 0;
+  }
+
+  :global(.reset-filters) {
+    margin-left: 4px;
   }
 </style>

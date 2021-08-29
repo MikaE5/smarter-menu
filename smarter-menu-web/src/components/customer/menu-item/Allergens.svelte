@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Badge } from 'sveltestrap';
   import { getAllergensByIds } from '../../../data/data';
   import type { Allergen } from '../../../data/model/allergen.interface';
   import SmarterMenuBadge from '../shared/SmarterMenuBadge.svelte';
