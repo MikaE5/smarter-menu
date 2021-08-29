@@ -6,8 +6,7 @@
 </script>
 
 <Link {to}>
-  <button class="btn smarter-menu-dark-accent-bg">
+  <button class="btn text-white smarter-menu-dark-accent-bg">
     {label}
   </button>
 </Link>
-

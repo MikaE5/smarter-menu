@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Badge } from 'sveltestrap';
   import { getClassificationsByIds } from '../../../data/data';
   import type { Classification } from '../../../data/model/classification.interface';
+  import SmarterMenuBadge from '../shared/SmarterMenuBadge.svelte';
 
   export let classificationIds: string[];
 
@@ -16,7 +16,7 @@
   {#await classifications$ then classifications}
     {#each classifications as classification, i}
       <div class={i === classifications.length - 1 ? '' : 'mr-1'}>
-        <Badge color="secondary">{classification.name}</Badge>
+        <SmarterMenuBadge label={classification.name} />
       </div>
     {/each}
   {/await}

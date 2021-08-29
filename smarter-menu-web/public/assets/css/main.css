@@ -272,7 +272,7 @@ i {
 }
 
 p {
-  margin: 0 0 2rem 0;
+  margin: 0 0 0 0;
 }
 
 p.major {
@@ -288,7 +288,7 @@ h6 {
   font-weight: 300;
   line-height: 1.375;
   letter-spacing: -0.05em;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
 h1 a,
@@ -341,7 +341,7 @@ sup {
 blockquote {
   border-left: solid 4px;
   font-style: italic;
-  margin: 0 0 2rem 0;
+  margin: 0;
   padding: 0.5rem 0 0.5rem 2rem;
 }
 
@@ -349,7 +349,7 @@ code {
   border-radius: 4px;
   font-family: 'Courier New', monospace;
   font-size: 0.9em;
-  margin: 0 0.25rem;
+  margin: 0;
   padding: 0.25rem 0.325rem;
 }
 
@@ -357,7 +357,7 @@ pre {
   -webkit-overflow-scrolling: touch;
   font-family: 'Courier New', monospace;
   font-size: 0.9em;
-  margin: 0 0 2rem 0;
+  margin: 0;
 }
 
 pre code {
@@ -370,11 +370,11 @@ pre code {
 hr {
   border: 0;
   border-bottom: solid 1px;
-  margin: 2.5rem 0;
+  margin: 0;
 }
 
 hr.major {
-  margin: 3.5rem 0;
+  margin: 0;
 }
 
 .align-left {
@@ -655,7 +655,7 @@ button.primary:active,
 
 .icon.major {
   display: block;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
 .icon.major:before {
@@ -715,19 +715,19 @@ a.icon.style2:active:before {
 
 .image.left {
   float: left;
-  margin: 0 1.5rem 1rem 0;
+  margin: 0;
   top: 0.25rem;
 }
 
 .image.right {
   float: right;
-  margin: 0 0 1rem 1.5rem;
+  margin: 0;
   top: 0.25rem;
 }
 
 .image.fit {
   display: block;
-  margin: 0 0 2rem 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -737,7 +737,7 @@ a.icon.style2:active:before {
 
 .image.main {
   display: block;
-  margin: 0 0 3rem 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -749,7 +749,7 @@ a.icon.style2:active:before {
 
 ol {
   list-style: decimal;
-  margin: 0 0 2rem 0;
+  margin: 0;
   padding-left: 1.25rem;
 }
 
@@ -759,7 +759,7 @@ ol li {
 
 ul {
   list-style: disc;
-  margin: 0 0 2rem 0;
+  margin: 0;
   padding-left: 1rem;
 }
 
@@ -783,13 +783,13 @@ ul.alt li:first-child {
 }
 
 dl {
-  margin: 0 0 2rem 0;
+  margin: 0;
 }
 
 dl dt {
   display: block;
   font-weight: 400;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
 dl dd {
@@ -1001,7 +1001,7 @@ header p {
 }
 
 table {
-  margin: 0 0 2rem 0;
+  margin: 0;
   width: 100%;
 }
 
