@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { Link } from 'svelte-navigator';
-  import { getBaseCustomerPath } from '../../util/routes.util';
 </script>
 
 <div class="is-preload">
