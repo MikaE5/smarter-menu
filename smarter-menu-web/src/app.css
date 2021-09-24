@@ -10,6 +10,11 @@
 .smarter-menu-dark-accent-bg {
   background-color: #088b4f !important;
 }
+
+.smarter-menu-dark-accent {
+  color: #088b4f !important;
+}
+
 .smarter-menu-primary-bg {
   background-color: #f1f2f3 !important;
 }

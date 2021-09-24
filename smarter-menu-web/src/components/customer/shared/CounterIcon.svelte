@@ -8,18 +8,26 @@
 
   let counterText;
 
+  let counterChanged = false;
+
   $: {
     if (typeof counter === 'number' && counter === 0 && hideZero) {
       counterText = '';
     } else {
       counterText = counter;
     }
+
+    console.log('counter changed');
+    counterChanged = true;
+    setTimeout(() => {
+      counterChanged = false;
+    }, 1000);
   }
 </script>
 
 <div class="d-flex">
-  <span class="counter">{counterText}</span>
-  <ClickIcon {icon} {click} {size}/>
+  <span class="counter" class:highlight={counterChanged}>{counterText}</span>
+  <ClickIcon {icon} {click} {size} highlight={counterChanged} />
 </div>
 
 <style>
@@ -27,5 +35,9 @@
     vertical-align: top;
     font-size: x-small;
     font-weight: bold;
+  }
+
+  .highlight {
+    color: var(--smarter-menu-light-accent);
   }
 </style>
