@@ -33,7 +33,7 @@ const getPageConfig = async () => {
   const pageConfigs =
     environment === 'dev'
       ? res.data.filter((config) => DEV_CONFIGS.includes(config.customer_id))
-      : res.data;
+      : res.data.filter((config) => config.customer_id !== 'smarter-menu-test');
   if (pageConfigs === undefined) {
     console.log('### No page configs available.');
     process.exit(1);
