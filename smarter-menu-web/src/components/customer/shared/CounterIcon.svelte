@@ -17,7 +17,6 @@
       counterText = counter;
     }
 
-    console.log('counter changed');
     counterChanged = true;
     setTimeout(() => {
       counterChanged = false;
