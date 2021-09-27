@@ -1,1 +1,1 @@
-# digital-menu
+# smarter-menu

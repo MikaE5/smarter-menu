@@ -1,4 +1,4 @@
 [build]
-  base="smarter-menu-web/"
   command = "npm run build"
-  publish = "public/"
+  publish = "smarter-menu-web/public/"
+  functions = "dist/functions"
