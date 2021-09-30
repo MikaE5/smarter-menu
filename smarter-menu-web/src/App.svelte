@@ -9,6 +9,8 @@
   import Imprint from './components/customer/Imprint.svelte';
   import DataPrivacy from './components/customer/DataPrivacy.svelte';
   import './app.css';
+  import { onMount } from 'svelte';
+  import { functionRequest } from './data/functions';
 
   const pageConfigs: PageConfig[] = pageConfigsJson as any;
 
@@ -17,6 +19,11 @@
   );
 
   const title = smarterMenuConfig.page_content.header.title;
+
+  onMount(async () => {
+    const res = await functionRequest('send-wishlist');
+    console.log(res);
+  });
 </script>
 
 <svelte:head>

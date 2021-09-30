@@ -3,7 +3,7 @@ import type { Classification } from './model/classification.interface';
 import type { MenuItem } from './model/menu-item.interface';
 import type { Allergen } from './model/allergen.interface';
 import type { CategoryType } from './model/category-type.enum';
-import { BehaviorSubject, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 import { sortByKeys } from '../util/array.util';
 import {

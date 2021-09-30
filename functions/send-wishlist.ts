@@ -5,9 +5,8 @@ export async function handler(
   event: APIGatewayEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
-  console.log('Hello world');
   const body = JSON.parse(event.body);
-  const wishlist = body.wishlist;
+  /*  const wishlist = body.wishlist;
   const customer_id = body.customer_id;
 
   if (wishlist === undefined || customer_id === undefined) {
@@ -17,17 +16,15 @@ export async function handler(
         msg: 'Bad request',
       }),
     };
-  }
+  } */
 
   const res: AxiosResponse = await axios.post(
-    `https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/analytics/wishlist`,
-    {
-      customer_id,
-      wishlist,
-    },
+    `https://gaqyjbmgml.execute-api.eu-central-1.amazonaws.com/hello`,
+    {},
     {
       headers: {
         'Content-Type': 'application/json',
+        'x-netlify-host': 'smarter-menu-netlify',
       },
     }
   );
@@ -35,7 +32,8 @@ export async function handler(
   return {
     statusCode: res.status,
     body: JSON.stringify({
-      msg: res.statusText,
+      msg: res.statusText + res.data.msg,
+      status: res.status,
     }),
   };
 }
