@@ -5,7 +5,7 @@ export async function handler(
   event: APIGatewayEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
-  const body = JSON.parse(event.body);
+  //const body = JSON.parse(event.body);
   /*  const wishlist = body.wishlist;
   const customer_id = body.customer_id;
 
